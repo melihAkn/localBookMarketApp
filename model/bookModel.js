@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
-const schema = mongoose.Schema();
+const schema = mongoose.Schema;
 
 const bookSchema = new schema ({
     name :{
         type : String,
         required : true,
-        maxlength : 255,
-        minlength : 1,
+        maxLength : 255,
+        minLength : 1,
     },
     publisher :{
         type : String,
         required : true,
-        maxlength : 64,
-        minlength : 3,
+        maxLength : 64,
+        minLength : 3,
     },
     author : {
         type : String,
         required : true,
-        maxlength : 64,
-        minlength : 3,
+        maxLength : 64,
+        minLength : 3,
     },
     stock : {
         type : Number,
@@ -38,27 +38,27 @@ const bookSchema = new schema ({
     ISBN : {
         type : String,
         required : true,
-        minlength : 9,
-        maxlength : 13,
+        minLength : 9,
+        maxLength : 13,
     },
     language : {
         type : String,
         required : true,
-        minlength : 3,
-        maxlength : 25,
+        minLength : 3,
+        maxLength : 25,
         
     },
     genre : {
-        tpye : String,
+        type : String,
         required : true,
-        minlength : 3,
-        maxlnegth : 64,
+        minLength : 3,
+        maxLnegth : 64,
     },
     description : {
         type : String,
         required : true,
-        minlength : 3,
-        maxlength : 256,
+        minLength : 3,
+        maxLength : 256,
     },
     averageRating : {
         type : Number,

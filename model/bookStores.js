@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const schema = mongoose.schema;
+const Books = require('./bookModel');
+const schema = mongoose.Schema;
 const bookStoreSchema = new schema({
     bookStoreName : {
         type : String,
@@ -46,7 +47,7 @@ const bookStoreSchema = new schema({
         
     },
     bookStoreWebsite : {
-        type : URL,
+        type : String,
         required : false,
         default : "",
 
@@ -57,14 +58,13 @@ const bookStoreSchema = new schema({
         default : 0,
         trim : true,
     },
-/*  
-    bookStoreImage : {
+    Books : {
+        type : Array,
+       Books : [{ type: String }],
+       required : false,
+
     }
-    kirtasiyeUrunleri: Kırtasiye tarafından satılan ürünlerin listesi veya kategorileri.
-    bu alanı soyle ekleyeceğim eğer kırtasiye sisteme giriş yapıp kitap eklerse o kitabın bazı bilgilerini bu alana eklerim
-*/
+},{collecions : 'BookStore',timestamps : true});
 
-
-
-
-},{collecions : 'BookStore',timestamps : true})
+const BookStore = mongoose.model('BookStore', bookStoreSchema);
+module.exports = BookStore;

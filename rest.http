@@ -2,3 +2,22 @@
 
 ###
 GET {{BASE_URL}}/index
+
+###
+POST {{BASE_URL}}/bookStore/register
+Content-Type: application/json
+
+{
+   "bookStoreName" : "agata kirtasiye",
+   "bookStoreContactNumber" : "555 555 55 55",
+   "bookStoreContactEmail" : "agatakrt@gmail.com",
+   "bookStoreUserName" : "agata",
+   "bookStorePassword" : "agata123",
+   "bookStoreAddress" : "ankara birşeyler mah",
+   "bookStoreCity" : "ankara",
+   "bookStoreWebsite" : "",
+    "Books": [
+       { "kitapad": "sadsadasd" ,"kitapISBN": "123123" },
+       { "kitapad": "assadasddas" ,"kitapISBN": "123123" }
+   ]
+}

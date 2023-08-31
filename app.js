@@ -26,12 +26,13 @@ const bookStoreRouter = require('./routes/bookStoreRouter');
 
 //rota tanimi ve template engine ayarlaması
 marketApp.use('/index', indexRouter);
-marketApp.use('bookStore', bookStoreRouter);
+marketApp.use('/bookStore', bookStoreRouter);
 marketApp.set('view engine', 'hbs');
 marketApp.set('views', path.join(__dirname, 'views'));
-
+marketApp.use(express.static('public'));
 //server başlangici
 marketApp.listen(3000, _ => {
     console.log("server 3000 portundan ayaklandi");
 })
 
+//https://turkiyeapi.cyclic.app/api/v1/provinces buraya api call yapılmali
