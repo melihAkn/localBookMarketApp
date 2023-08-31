@@ -1,8 +1,11 @@
 
 const index = (req,res) => {
-    res.send("deneme");
+    
+    
+    
+    res.render('index');
 }
 
 module.exports = {
-    index
+    index,
 }
