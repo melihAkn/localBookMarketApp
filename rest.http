@@ -21,3 +21,12 @@ Content-Type: application/json
        { "kitapad": "assadasddas" ,"kitapISBN": "123123" }
    ]
 }
+
+###
+POST {{BASE_URL}}/bookStore/login
+Content-Type: application/json
+
+{
+    "bookStoreUserName" : "agata",
+    "bookStorePassword" : "agata123"
+}
