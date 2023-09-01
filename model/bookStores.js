@@ -69,7 +69,8 @@ const bookStoreSchema = new schema({
         type : Array,
        Books : [{ type: String }],
        required : false,
-
+       default : []
+ 
     }
 },{collecions : 'BookStore',timestamps : true});
 

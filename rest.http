@@ -19,11 +19,8 @@ Content-Type: application/json
    "bookStorePassword" : "agata123",
    "bookStoreAddress" : "ankara birşeyler mah",
    "bookStoreCity" : "ankara",
-   "bookStoreWebsite" : "",
-    "Books": [
-       { "kitapad": "sadsadasd" ,"kitapISBN": "123123" },
-       { "kitapad": "assadasddas" ,"kitapISBN": "123123" }
-   ]
+   "bookStoreWebsite" : ""
+
 }
 
 ###
