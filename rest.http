@@ -4,6 +4,10 @@
 GET {{BASE_URL}}/index
 
 ###
+GET {{BASE_URL}}/index/getCityNames
+
+
+###
 POST {{BASE_URL}}/bookStore/register
 Content-Type: application/json
 

@@ -2,9 +2,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const hbs = require('hbs');
+const axios = require('axios');
 const path = require('path');
 require('dotenv').config();
-
+require('./cache/apiCall');
 
 //uygulamanın başlatılması
 marketApp = express();
@@ -35,4 +36,4 @@ marketApp.listen(3000, _ => {
     console.log("server 3000 portundan ayaklandi");
 })
 
-//https://turkiyeapi.cyclic.app/api/v1/provinces buraya api call yapılmali
+

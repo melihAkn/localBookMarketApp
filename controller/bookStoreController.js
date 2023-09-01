@@ -1,7 +1,6 @@
 //
 const bookModel = require('../model/bookModel');
 const bookStoreModel = require('../model/bookStores');
-const bookstoresLogModel = require('../model/bookStoreLogModel');
 
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
