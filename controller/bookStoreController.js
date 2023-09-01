@@ -3,6 +3,10 @@ const bookModel = require('../model/bookModel');
 const bookStoreModel = require('../model/bookStores');
 const bookstoresLogModel = require('../model/bookStoreLogModel');
 
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const secretKey = process.env.SECRET_KEY;
+
 const login = async (req, res) => {
     let responseMessage ={
         message : "",
@@ -43,18 +47,62 @@ const register = async (req, res)  => {
     }
 }
 
-const addBooks = (req, res) => {
+const addBooks = async (req, res) => {
+    const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
 
+    try {
+        const findBookStore = await bookStoreModel.findById(jwtResult._id);
 
+        if (!findBookStore) {
+            return res.status(404).send('Kitap mağazasİ bulunamadİ');
+        }
 
+        const newBook = {
+            name: req.body.name,
+            publisher: req.body.publisher,
+            author: req.body.author,
+            stock: req.body.stock,
+            publicationDate: req.body.publicationDate,
+            pageCount: req.body.pageCount,
+            ISBN: req.body.ISBN,
+            language: req.body.language,
+            genre: req.body.genre,
+            description: req.body.description,
+            averageRating: req.body.averageRating
+        };
 
+        findBookStore.Books.push(newBook);
 
-    
-    res.send('sasad');
+        await findBookStore.save();
+
+        //console.log('Kitap mağazası güncellendi:', updatedBookStore);
+
+        const insertedBook = new bookModel(req.body);
+        insertedBook.addingBookStore = findBookStore.bookStoreName;
+        await insertedBook.save();
+
+        res.send('Kitap başarİyla eklendi');
+    } catch (err) {
+        console.error('Hata oluştu:', err);
+        res.status(500).send('Bir hata oluştu');
+    }
 }
 
-const getMyBooks = (req, res) => {
-    res.send('sasad');
+const getMyBooks = async (req, res) => {
+    const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
+    const filter = { _id : jwtResult._id}
+
+    const bookStore = await bookStoreModel.find(filter)
+    console.log(bookStore[0].bookStoreName);
+    const filter2 = {addingBookStore : bookStore[0].bookStoreName}
+    
+    const findingBooks =await bookModel.find(filter2)
+    console.log(findingBooks)
+    res.send(findingBooks);
+
+
+
+
 }
 
 

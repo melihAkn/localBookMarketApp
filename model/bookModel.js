@@ -27,7 +27,7 @@ const bookSchema = new schema ({
         minvalue : 0,
     },
     publicationDate : {
-        type : Date,
+        type : String,
         required : true,
     },
     pageCount : {
@@ -44,7 +44,7 @@ const bookSchema = new schema ({
     language : {
         type : String,
         required : true,
-        minLength : 3,
+        minLength : 1,
         maxLength : 25,
         
     },
@@ -66,6 +66,11 @@ const bookSchema = new schema ({
         default : 0,
 
     },
+    addingBookStore : {
+        type : String,
+        required : true,
+        
+    }
   
 /*
 bunlar duruma gore daha sonra eklenmeli

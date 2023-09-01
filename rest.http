@@ -30,3 +30,34 @@ Content-Type: application/json
     "bookStoreUserName" : "agata",
     "bookStorePassword" : "agata123"
 }
+
+###
+POST {{BASE_URL}}/bookStore/addBooks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYwNWQ5MjBhMzI2ZGE5YTlhNGNmMWQiLCJpYXQiOjE2OTM1NTI3MTUsImV4cCI6MTY5MzU1NjMxNX0.-uahQc65PxzMKsBv2I3UluWMDOQPr79L3679ra5zVBo
+
+{
+    "name" : "ddede",
+    "publisher" : "pegasus",
+    "author" : "ahmet",
+    "stock" : "2",
+    "publicationDate" : "23/04/2021",
+    "pageCount" : "434",
+    "ISBN" : "1234567891",
+    "language" : "tr",
+    "genre" : "science",
+    "description" : "wdadwdsawdsawdsawdsawdsawdsawdsa",
+    "averageRating" : "3.5"
+}
+
+###
+GET {{BASE_URL}}/bookStore/getMyBooks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYwNWQ5MjBhMzI2ZGE5YTlhNGNmMWQiLCJpYXQiOjE2OTM1NTI3MTUsImV4cCI6MTY5MzU1NjMxNX0.-uahQc65PxzMKsBv2I3UluWMDOQPr79L3679ra5zVBo
+
+{
+
+}
+
+
+
