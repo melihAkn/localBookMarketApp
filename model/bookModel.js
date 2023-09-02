@@ -70,6 +70,10 @@ const bookSchema = new schema ({
         type : String,
         required : true,
         
+    },
+    ownedBookStore : {
+        type : String,
+        required : false
     }
   
 /*

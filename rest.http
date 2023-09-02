@@ -6,18 +6,21 @@ GET {{BASE_URL}}/index
 ###
 GET {{BASE_URL}}/index/getCityNames
 
+###
+GET {{BASE_URL}}/index/getBooks/Ankara/d
+Content-Type: application/json
 
 ###
 POST {{BASE_URL}}/bookStore/register
 Content-Type: application/json
 
 {
-   "bookStoreName" : "agata kirtasiye",
+   "bookStoreName" : "warwar kirtasiye",
    "bookStoreContactNumber" : "555 555 55 55",
-   "bookStoreContactEmail" : "agatakrt@gmail.com",
-   "bookStoreUserName" : "agata",
-   "bookStorePassword" : "agata123",
-   "bookStoreAddress" : "ankara birşeyler mah",
+   "bookStoreContactEmail" : "wwdwdsa@gmail.com",
+   "bookStoreUserName" : "wewe",
+   "bookStorePassword" : "wewewewe",
+   "bookStoreAddress" : "ankara wewe mah",
    "bookStoreCity" : "ankara",
    "bookStoreWebsite" : ""
 
@@ -28,26 +31,26 @@ POST {{BASE_URL}}/bookStore/login
 Content-Type: application/json
 
 {
-    "bookStoreUserName" : "agata",
-    "bookStorePassword" : "agata123"
+    "bookStoreUserName" : "wewe",
+    "bookStorePassword" : "wewewewe"
 }
 
 ###
 POST {{BASE_URL}}/bookStore/addBooks
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYwNWQ5MjBhMzI2ZGE5YTlhNGNmMWQiLCJpYXQiOjE2OTM1NTI3MTUsImV4cCI6MTY5MzU1NjMxNX0.-uahQc65PxzMKsBv2I3UluWMDOQPr79L3679ra5zVBo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYyZDM5NDY0N2Q2ODhiZmM1YzBlYzgiLCJpYXQiOjE2OTM2NTUxNzUsImV4cCI6MTY5MzY1ODc3NX0.bEQgcA215NEXmKP6qwdXHaBtpP-ESy__vxh6UgYx51I
 
 {
-    "name" : "ddede",
+    "name" : "vvv",
     "publisher" : "pegasus",
-    "author" : "ahmet",
-    "stock" : "2",
+    "author" : "mehmet",
+    "stock" : "3",
     "publicationDate" : "23/04/2021",
     "pageCount" : "434",
-    "ISBN" : "1234567891",
+    "ISBN" : "1234567821",
     "language" : "tr",
-    "genre" : "science",
-    "description" : "wdadwdsawdsawdsawdsawdsawdsawdsa",
+    "genre" : "action",
+    "description" : "eeerrereee",
     "averageRating" : "3.5"
 }
 

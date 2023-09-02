@@ -67,7 +67,8 @@ const addBooks = async (req, res) => {
             language: req.body.language,
             genre: req.body.genre,
             description: req.body.description,
-            averageRating: req.body.averageRating
+            averageRating: req.body.averageRating,
+            ownedBookStore : findBookStore.bookStoreName,
         };
 
         findBookStore.Books.push(newBook);
