@@ -4,13 +4,12 @@ kullanıcının konumuna gore o konumdaki kırtasiyelerin ve kitap satan yerleri
 
 kırtasiyelerin frontend tasarımı 
 ## ana sayfa
-
-## kitaplarım
+ana sayfa acıldıgında kırtasiyenin sistme eklemiş oldugu tum kitaplar geliyor
 
 ## yeni kitap ekle 
-
+sisteme kitap ekleme formunun yapılması gerek
 ## bilgilerimi guncelle
-
+kırtasiyeler kendi bilgilerini guncelleyebilmeli
 
 
 

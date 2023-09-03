@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/css/bookStoreRegister.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+     {{responseMessage.message}}
+    {{responseMessage.error}}
         <h1> book store register sayfasi</h1>
-    <form action="bookStoreRegister" method="post">
-
+    <form action="/index/bookStoreRegister" method="post" id="myForm">
+       name: <input type="text" name="bookStoreName" id="" placeholder="bookStoreName">*<br>
+       contact number: <input type="text" name="bookStoreContactNumber" id="" placeholder="contact number">*<br>
+       email: <input type="text" name="bookStoreContactEmail" id="" placeholder="email">*<br>
+       username: <input type="text" name="bookStoreUserName" id="" placeholder="userName">*<br>
+       password: <input type="password" name="bookStorePassword" id="" placeholder="password">*<br>
+       physcial adress:<input type="text" name="bookStoreAddress" id="" placeholder="physcial adress">*<br>
+       city:   <select class="citys" name="bookStoreCity">
+                <option value="konum">seciniz</option>
+                
+            </select>*<br>
+       website: <input type="text" name="bookStoreWebsite" id="" placeholder="website"><br>
+        <button type="submit"> register</button>
 
 
 
 
         
     </form>
+    
+   
+    <script src="../scripts/bookStoreRegister.js"> 
+    
+    </script>
 </body>
 </html>

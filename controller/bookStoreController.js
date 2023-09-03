@@ -37,15 +37,22 @@ const register = async (req, res)  => {
 
         if (result) {
              responseMessage = { message: "Successfully registered" };
-            res.json(responseMessage);
         } else {
              responseMessage = { message: "Registration failed" };
-            res.json(responseMessage);
         }
     } catch (error) {
          responseMessage = { message: "An error occurred during registration", error : error.message };
-        res.status(500).json(responseMessage);
+        
     }
+    if(!responseMessage.error ){
+        console.log(responseMessage)
+        res.redirect('/index/bookStoreLogin');
+        
+    }
+    else{
+        res.render('bookStoreRegister', {responseMessage})
+    }
+   
 }
 
 const addBooks = async (req, res) => {
