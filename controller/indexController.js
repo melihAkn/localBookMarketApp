@@ -6,6 +6,19 @@ const bookStoreModel = require('../model/bookStores');
 const index = (req,res) => {
     res.render('index');
 }
+
+const bookStore = (req,res) => {
+
+    res.render('bookStore');
+}
+const bookStoreLogin = (req,res) => {
+
+    res.render('bookStoreLogin');
+}
+const bookStoreRegister = (req,res) => {
+    res.render('bookStoreRegister');
+}
+
 const getCityNames = (req,res) => {
     const apiResponse = apicache.get('cityNames');
     res.send(apiResponse);
@@ -31,4 +44,7 @@ module.exports = {
     index,
     getCityNames,
     getBooks,
+    bookStoreLogin,
+    bookStoreRegister,
+    bookStore
 }  

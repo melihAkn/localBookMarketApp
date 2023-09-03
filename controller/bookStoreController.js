@@ -24,7 +24,9 @@ const login = async (req, res) => {
     } catch (error) {
         console.log(error.message);     
     }
-    res.send(responseMessage);
+    res.cookie('token',responseMessage.token,{maxAge : 3600000});
+    res.redirect('/index/bookStore');
+   
 
 }
 const register = async (req, res)  => {
@@ -93,11 +95,11 @@ const getMyBooks = async (req, res) => {
     const filter = { _id : jwtResult._id}
 
     const bookStore = await bookStoreModel.find(filter)
-    console.log(bookStore[0].bookStoreName);
+    //console.log(bookStore[0].bookStoreName);
     const filter2 = {addingBookStore : bookStore[0].bookStoreName}
     
     const findingBooks =await bookModel.find(filter2)
-    console.log(findingBooks)
+    //console.log(findingBooks)
     res.send(findingBooks);
 
 
