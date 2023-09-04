@@ -5,8 +5,7 @@ console.log(token);
 
 
 
-function performSearch() {
-const cardContainer = document.querySelector(".card-container"); // cardContainer tanımlandı
+function getMyBooks() {
 
 const apiUrl = `http://localhost:3000/bookStore/getMyBooks`;
 
@@ -38,10 +37,8 @@ headers : {
                     <p class="card-text">kitap aciklamasi: ${bookArray.description}</p>
                     <p class="card-text">ortalama puan: ${bookArray.averageRating}</p>
                     <p class="card-text">kirtasiye ismi: ${bookArray.ownedBookStore}</p>
-                    <!-- Diğer alanlari buraya ekleyin -->
                 </div>
             `;
-
             cardContainer.appendChild(card);
     });
 })
@@ -49,4 +46,23 @@ headers : {
     console.error("API çağrisi başarisiz oldu:", error);
 });
 }
-document.addEventListener('DOMContentLoaded',performSearch);
+document.addEventListener('DOMContentLoaded',getMyBooks);
+
+
+//navigation bar da anasayfa ya tıklandıgında yapılacak islemler
+const anaSayfa = document.querySelector('.anaSayfa');
+anaSayfa.addEventListener('click', _ => {
+    console.log('tiklandi')
+})
+//navigation bar da kitapEkle ya tıklandıgında yapılacak islemler
+const kitapEkle = document.querySelector('.kitapEkle');
+kitapEkle.addEventListener('click', _ => {
+    console.log('tiklandi')
+})
+
+
+//navigation bar da bilgilerimiGuncelle ya tıklandıgında yapılacak islemler
+const bilgilerimiGuncelle = document.querySelector('.bilgilerimiGuncelle');
+bilgilerimiGuncelle.addEventListener('click', _ => {
+    console.log('tiklandi')
+})

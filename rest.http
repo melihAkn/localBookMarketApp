@@ -59,9 +59,5 @@ GET {{BASE_URL}}/bookStore/getMyBooks
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYwNWQ5MjBhMzI2ZGE5YTlhNGNmMWQiLCJpYXQiOjE2OTM1NTI3MTUsImV4cCI6MTY5MzU1NjMxNX0.-uahQc65PxzMKsBv2I3UluWMDOQPr79L3679ra5zVBo
 
-{
-
-}
-
 
 
