@@ -13,6 +13,12 @@ indexRouter.post('/bookStoreLogin', bookStoreController.login);
 indexRouter.get('/bookStoreRegister', indexController.bookStoreRegister);
 indexRouter.post('/bookStoreRegister', bookStoreController.register);
 
+indexRouter.get('/bookStoreAddBooks', indexController.bookStoreAddBooks);
+indexRouter.post('/bookStoreAddBooks', bookStoreController.addBooks);
+
+indexRouter.get('/bookStoreUpdateInfos', indexController.bookStoreUpdateInfos);
+indexRouter.patch('/bookStoreUpdateInfos', bookStoreController.updateMyInfos);
+
 indexRouter.get('/bookStore',indexController.bookStore)
 module.exports = indexRouter;
 

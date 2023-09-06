@@ -57,10 +57,9 @@ const register = async (req, res)  => {
 
 const addBooks = async (req, res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
-
+    console.log(req.body)
     try {
         const findBookStore = await bookStoreModel.findById(jwtResult._id);
-
         if (!findBookStore) {
             return res.status(404).send('Kitap mağazasİ bulunamadİ');
         }
@@ -77,14 +76,11 @@ const addBooks = async (req, res) => {
             genre: req.body.genre,
             description: req.body.description,
             averageRating: req.body.averageRating,
-            ownedBookStore : findBookStore.bookStoreName,
+            ownedBookStore : findBookStore.bookStoreName
         };
-
         findBookStore.Books.push(newBook);
 
         await findBookStore.save();
-
-        //console.log('Kitap mağazası güncellendi:', updatedBookStore);
 
         const insertedBook = new bookModel(req.body);
         insertedBook.addingBookStore = findBookStore.bookStoreName;
@@ -92,7 +88,7 @@ const addBooks = async (req, res) => {
 
         res.send('Kitap başarİyla eklendi');
     } catch (err) {
-        console.error('Hata oluştu:', err);
+        console.error('Hata oluştu:', err.message);
         res.status(500).send('Bir hata oluştu');
     }
 }
@@ -114,12 +110,28 @@ const getMyBooks = async (req, res) => {
 
 }
 
+const findMyInfos = async (req,res)  => {
+    const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
+    const filter = { _id : jwtResult._id};
+    const bookStore = await bookStoreModel.find(filter ,{ _id: 0 , Books : 0 ,createdAt : 0 , updatedAt : 0, __v : 0 });
+    res.send(bookStore);
+}
 
-
-
+const updateMyInfos = async (req,res) => {
+    const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
+    const filter = { _id : jwtResult._id};
+    const update = await bookStoreModel.updateOne(filter, { $set: req.body });
+    if(update) {
+        res.send('islem basarili')
+    }else {
+        res.send('hata')
+    }
+}
 module.exports = {
     login,
     register,
     addBooks,
     getMyBooks,
+    findMyInfos,
+    updateMyInfos,
 };

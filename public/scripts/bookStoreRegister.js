@@ -35,4 +35,5 @@ fetch(cityApiUrl)
     
     });
     });
-    
+    const logout = document.getElementById('logout')
+

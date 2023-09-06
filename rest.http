@@ -57,7 +57,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYyZDM5N
 ###
 GET {{BASE_URL}}/bookStore/getMyBooks
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYwNWQ5MjBhMzI2ZGE5YTlhNGNmMWQiLCJpYXQiOjE2OTM1NTI3MTUsImV4cCI6MTY5MzU1NjMxNX0.-uahQc65PxzMKsBv2I3UluWMDOQPr79L3679ra5zVBo
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYyZDM5NDY0N2Q2ODhiZmM1YzBlYzgiLCJpYXQiOjE2OTM5ODUwNjUsImV4cCI6MTY5Mzk4ODY2NX0._DeGeHlX6SwwauwF5ii5DxDJejnisSrjJPq-kFlsG9w
+###
+GET {{BASE_URL}}/bookStore/findMyInfos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYyZDM5NDY0N2Q2ODhiZmM1YzBlYzgiLCJpYXQiOjE2OTM5ODIyNTAsImV4cCI6MTY5Mzk4NTg1MH0.6Lmxyb_10F_yDPubOwBPj9Y_FvBTwW794y-yHDg26TM
 

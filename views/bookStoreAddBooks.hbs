@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Kirtasiye Yönetim Paneli</title>
+      <link rel="stylesheet" href="/css/bookStore.css">
+      <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+        <h1>Kirtasiye Yönetim Paneli</h1>
+        <nav>
+            <ul>
+                <li class="anaSayfa"><a href="/index/bookStore">Ana Sayfa</a></li>
+                <li class="kitapEkle"><a href="/index/bookStoreAddBooks">Yeni kitap Ekle</a></li>
+                <li class="bilgilerimiGuncelle"><a href="/index/bookStoreUpdateInfos">bilgilerimi guncelle</a></li>
+
+                <li id="logout"><a href="/index/bookStoreLogin">cikis Yap</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+    <form id="myForm" action="/index/bookStoreAddBooks" method="post"   enctype="application/json" >
+    <input type="text" name="name" id="" placeholder="book name">
+    <input type="text" name="publisher" id="" placeholder="publisher name">
+    <input type="text" name="author" id="" placeholder=" author name">
+    <input type="text" name="stock" id="" placeholder="stock">
+    <input type="text" name="publicationDate" id="" placeholder="publication date">
+    <input type="text" name="pageCount" id="" placeholder="page count">
+    <input type="text" name="ISBN" id="" placeholder="ISBN code">
+    <input type="text" name="language" id="" placeholder="book language">
+    <input type="text" name="genre" id="" placeholder="book genre">
+    <input type="text" name="description" id="" placeholder="book description">
+    <input type="text" name="averageRating" id="" placeholder="book average rating">
+    <button class="addBook" type="submit">add book</button>
+    </form>
+    </div>
+
+    <script src="../scripts/bookStoreAddBooks.js">
+
+    </script>
+</body>
+</html>
+  

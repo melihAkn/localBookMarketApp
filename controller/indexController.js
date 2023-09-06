@@ -18,7 +18,12 @@ const bookStoreLogin = (req,res) => {
 const bookStoreRegister = (req,res) => {
     res.render('bookStoreRegister');
 }
-
+const bookStoreAddBooks = (req,res) => {
+    res.render('bookStoreAddBooks');
+}
+const bookStoreUpdateInfos = (req,res) => {
+    res.render('bookStoreUpdateInfos');
+}
 const getCityNames = (req,res) => {
     const apiResponse = apicache.get('cityNames');
     res.send(apiResponse);
@@ -46,5 +51,7 @@ module.exports = {
     getBooks,
     bookStoreLogin,
     bookStoreRegister,
-    bookStore
+    bookStore,
+    bookStoreAddBooks,
+    bookStoreUpdateInfos,
 }  

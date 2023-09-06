@@ -7,6 +7,5 @@ bookStoreRouter.post("/register",bookstoreController.register);
 bookStoreRouter.post("/addBooks",bookstoreController.addBooks);
 bookStoreRouter.get("/getMyBooks",bookstoreController.getMyBooks);
 
-
-
+bookStoreRouter.get('/findMyInfos',bookstoreController.findMyInfos);
 module.exports = bookStoreRouter;

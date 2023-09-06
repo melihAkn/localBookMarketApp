@@ -2,9 +2,6 @@
 const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
 console.log(token);
 
-
-
-
 function getMyBooks() {
 
 const apiUrl = `http://localhost:3000/bookStore/getMyBooks`;
@@ -14,6 +11,7 @@ method : 'GET',
 headers : {
     Authorization : `Bearer ${token}`
 }
+
 })
 .then(response => response.json())
 .then(bookData => {
@@ -54,11 +52,6 @@ const anaSayfa = document.querySelector('.anaSayfa');
 anaSayfa.addEventListener('click', _ => {
     console.log('tiklandi')
 })
-//navigation bar da kitapEkle ya tıklandıgında yapılacak islemler
-const kitapEkle = document.querySelector('.kitapEkle');
-kitapEkle.addEventListener('click', _ => {
-    console.log('tiklandi')
-})
 
 
 //navigation bar da bilgilerimiGuncelle ya tıklandıgında yapılacak islemler
@@ -66,3 +59,12 @@ const bilgilerimiGuncelle = document.querySelector('.bilgilerimiGuncelle');
 bilgilerimiGuncelle.addEventListener('click', _ => {
     console.log('tiklandi')
 })
+const logout = document.getElementById('logout')
+
+function logoutf() {
+    // Cookie adı ve domain'i ile çerezi temizle
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=localhost";
+    
+    // Kullanıcıyı çıkış sayfasına yönlendirin veya başka bir işlem yapın
+}
+logout.addEventListener('click',logoutf)

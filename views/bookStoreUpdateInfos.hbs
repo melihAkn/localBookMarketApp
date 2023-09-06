@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Kirtasiye Yönetim Paneli</title>
+      <link rel="stylesheet" href="/css/bookStore.css">
+      <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+        <h1>Kirtasiye Yönetim Paneli</h1>
+        <nav>
+            <ul>
+                <li class="anaSayfa"><a href="/index/bookStore">Ana Sayfa</a></li>
+                <li class="kitapEkle"><a href="/index/bookStoreAddBooks">Yeni kitap Ekle</a></li>
+                <li class="bilgilerimiGuncelle"><a href="/index/bookStoreUpdateInfos">bilgilerimi guncelle</a></li>
+                <li id="logout"><a href="/index/bookStoreLogin">cikis Yap</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+    <form id="myForm" action="/index/bookStoreUpdateInfos" method="patch"   enctype="application/json" >
+    <input type="text" name="bookStoreName" id="" placeholder="book store name">
+    <input type="text" name="bookStoreContactNumber" id="" placeholder="book store contact number">
+    <input type="text" name="bookStoreContactEmail" id="" placeholder="  email">
+    <input type="text" name="bookStoreUserName" id="" placeholder="userName">
+    <input type="text" name="bookStorePassword" id="" placeholder="password">
+    <input type="text" name="bookStoreAddress" id="" placeholder="address">
+    <input type="text" name="bookStoreCity" id="" placeholder="city">
+    <input type="text" name="bookStoreWebsite" id="" placeholder="website">
+   
+    <button class="updateInfos" type="submit">add book</button>
+    </form>
+    </div>
+
+    <script src="../scripts/bookStoreUpdateInfos.js">
+
+    </script>
+</body>
+</html>
+  
