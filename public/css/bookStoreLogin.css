@@ -34,7 +34,13 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 3px;
 }
-
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 /* Button stilini ayarlayalım */
 button[type="submit"] {
     width: 100%;

@@ -13,11 +13,12 @@
     <h1> book store login sayfasi</h1>
         <form id="myForm" action="/index/bookStoreLogin" method="post" enctype="application/json" >
             <input type="text" name="bookStoreUserName" placeholder="username">
-            <input type="text" name="bookStorePassword" placeholder="password"> 
+            <input type="password" name="bookStorePassword" placeholder="password"> 
             <button type="submit"> login</button>
         
     </form>
-
+    <p> {{message.hata}} </p>
+    
       <script src="../scripts/bookStoreLogin.js" ></script>
 </body>
 </html>

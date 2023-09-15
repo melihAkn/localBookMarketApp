@@ -13,19 +13,24 @@ const login = async (req, res) => {
     }
     try {
         const bookStore = await bookStoreModel.login(req.body.bookStoreUserName , req.body.bookStorePassword);
+        console.log(bookStore)
         if(!bookStore.hata){
             const token = await bookStore.generateToken();
             responseMessage.token = token;
             responseMessage.message ="succesfully login";
+            res.cookie('token',responseMessage.token,{maxAge : 3600000});
+            res.redirect('/index/bookStore');
         }
         else{
             responseMessage.message = "email/username or password wrong";
+            res.render('bookStoreLogin',{message : bookStore})
+            console.log("e")
         }
+       
     } catch (error) {
         console.log(error.message);     
     }
-    res.cookie('token',responseMessage.token,{maxAge : 3600000});
-    res.redirect('/index/bookStore');
+    
    
 
 }

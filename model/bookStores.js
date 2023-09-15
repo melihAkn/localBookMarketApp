@@ -89,7 +89,7 @@ bookStoreSchema.statics.login = async (username , password) => {
     const bookStoreFind = await BookStore.findOne(filter);
     if(!bookStoreFind){
        return {
-        hata : "email/username or password is wrong"
+        hata : "username or password is wrong"
        }
     }
         return bookStoreFind;
