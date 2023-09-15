@@ -31,6 +31,7 @@ const getCityNames = (req,res) => {
 const getBooks = async (req,res) => {
     const searchedCity = req.params.city;
     const searchedName = req.params.name;
+    console.log(searchedCity +" " + searchedName)
     let filter = {bookStoreCity : searchedCity };
 
     const findedBookStore = await bookStoreModel.find(filter);
@@ -40,10 +41,15 @@ const getBooks = async (req,res) => {
         e.Books.forEach( e => {
             if(e.name.includes(searchedName)) {
                 books.push(e);
+                
+            }else if(e.name === null){
             }
-        })
-    });   
-    res.send(books);
+        }) 
+    });
+    console.log(books)
+        res.send(books);
+    
+    
 }
 module.exports = {
     index,

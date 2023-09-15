@@ -25,12 +25,12 @@ function performSearch() {
     
     const apiUrl = `http://localhost:3000/index/getBooks/${selectedLocation}/${searchValue}`;
 
-    fetch(apiUrl)
+    fetch(apiUrl) 
         .then(response => response.json())
         .then(bookData => {
             const cardContainer = document.querySelector(".card-container");
             cardContainer.textContent = "";
-            bookData.forEach(bookArray => {
+                bookData.forEach(bookArray => {
                     const card = document.createElement("div");
                     card.classList.add("card");
 
@@ -53,7 +53,15 @@ function performSearch() {
                     `;
 
                     cardContainer.appendChild(card);
-            });
+            });  
+            if (cardContainer.children.length === 0) {
+                console.log('Div içeriği boş.');
+                const message = document.createElement("p")
+                message.innerHTML = "girdiginiz kitap sehrinizde yok yada yanlis girdiniz"
+                cardContainer.appendChild(message)
+            } else {
+            }
+           
         })
         .catch(error => {
             console.error("API çağrisi başarisiz oldu:", error);
