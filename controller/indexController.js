@@ -49,7 +49,23 @@ const getBooks = async (req,res) => {
     console.log(books)
         res.send(books);
     
-    
+}
+const getBooksByCity = async (req,res) => {
+    const searchedCity = req.params.city;
+    console.log(searchedCity)
+    let filter = {bookStoreCity : searchedCity };
+    const findedBookStore = await bookStoreModel.find(filter);
+    let books = [];
+    //console.log(findedBookStore)
+    findedBookStore.forEach(e => {
+        e.Books.forEach( e => {
+                books.push(e);
+             if(e.name === null){
+            }
+        }) 
+    });
+    console.log(books)
+        res.send(books);
 }
 module.exports = {
     index,
@@ -60,4 +76,6 @@ module.exports = {
     bookStore,
     bookStoreAddBooks,
     bookStoreUpdateInfos,
+    getCityNames,
+    getBooksByCity,
 }  

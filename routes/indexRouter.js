@@ -6,6 +6,7 @@ indexRouter.get('/', indexController.index);
 indexRouter.get('/getCityNames', indexController.getCityNames);
 
 indexRouter.get('/getBooks/:city/:name', indexController.getBooks);
+indexRouter.get('/getBooksByCity/:city',indexController.getBooksByCity);
 
 indexRouter.get('/bookStoreLogin', indexController.bookStoreLogin);
 indexRouter.post('/bookStoreLogin', bookStoreController.login);
