@@ -1,8 +1,7 @@
-
 const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
 console.log(token);
 
-function getMyBooks() {
+function  getMyBooks() {
 
 const apiUrl = `http://localhost:3000/bookStore/getMyBooks`;
 
@@ -35,30 +34,48 @@ headers : {
                     <p class="card-text">kitap aciklamasi: ${bookArray.description}</p>
                     <p class="card-text">ortalama puan: ${bookArray.averageRating}</p>
                     <p class="card-text">kirtasiye ismi: ${bookArray.addingBookStore}</p>
+                    <button class = "card-BookUpdate" >guncelle</button>
+                    <button class = "card-BookDelete" >sil</button>
                 </div>
             `;
             cardContainer.appendChild(card);
     });
 })
+.then( _ => {
+   const updateButtons = document.querySelectorAll('.card-BookUpdate');
+   const deleteButtons = document.querySelectorAll('.card-BookDelete');
+   // Her bir buton için aynı işlevi atan bir olay dinleyicisi ekleyin
+   updateButtons.forEach(function (button) {
+       button.addEventListener('click', function () {
+           console.log('Bu butona tıklandı!');
+
+
+       });
+   });
+
+   deleteButtons.forEach(function (button) {
+       button.addEventListener('click', function () {
+           console.log('Bu butona tıklandı!');
+
+           
+       });
+   });
+})
 .catch(error => {
     console.error("API çağrisi başarisiz oldu:", error);
 });
 }
-document.addEventListener('DOMContentLoaded',getMyBooks);
+
+document.addEventListener('DOMContentLoaded', async function(){
+   getMyBooks()
+
+   // Tüm "card-button" sınıfına sahip butonları seçin
+
+});
 
 
-//navigation bar da anasayfa ya tıklandıgında yapılacak islemler
-const anaSayfa = document.querySelector('.anaSayfa');
-anaSayfa.addEventListener('click', _ => {
-    console.log('tiklandi')
-})
 
 
-//navigation bar da bilgilerimiGuncelle ya tıklandıgında yapılacak islemler
-const bilgilerimiGuncelle = document.querySelector('.bilgilerimiGuncelle');
-bilgilerimiGuncelle.addEventListener('click', _ => {
-    console.log('tiklandi')
-})
 const logout = document.getElementById('logout')
 
 function logoutf() {

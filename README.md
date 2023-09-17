@@ -6,6 +6,16 @@ kullanıcının konumuna gore o konumdaki kırtasiyelerin ve kitap satan yerleri
 ana sayfa acıldıgında kırtasiyenin sistme eklemiş oldugu tum kitaplar geliyor
 
 
+
+
+## yapılacaklar
+kirtasiyeler kayıt olurken şifrelerinin bcrypt ile şifrelenip veritabanına eklenmesi gerekiyor
+kullanıcı siteye giriş yaptıgında konumunun alınması ve sehir seçilen alana aktarılamsı (tarayicidan konum erişimi vermemisse ip den konum verisi çekilmeli)
+
+
+
+
+
 ## kitap silme
 
 
@@ -15,8 +25,9 @@ ana sayfa acıldıgında kırtasiyenin sistme eklemiş oldugu tum kitaplar geliy
 ## tum kitapları silme (belki)
 
 
-proje biterse açıklama satırı eklenmeli
-
+proje bittigi zaman
+açıklama satırı eklenmeli
+degisken isimleri ve turevleri ingilizceye cevirilmeli
 
 
 

@@ -1,6 +1,7 @@
 const NodeCache = require('node-cache');
 const axios = require('axios');
 const apicache = new NodeCache({ stdTTL: 60 * 60 }); // 1 saat önbellekte tutma süresi
+/*
 const getDataToCache = async _ => {
   const apiResponse = apicache.get('apiResponse'); // Önbellekten veriyi alma
 
@@ -27,5 +28,6 @@ const getDataToCache = async _ => {
   }
 }
 getDataToCache()
+*/
 module.exports = apicache;
 
