@@ -11,7 +11,9 @@ ana sayfa acıldıgında kırtasiyenin sistme eklemiş oldugu tum kitaplar geliy
 ## yapılacaklar
 kirtasiyeler kayıt olurken şifrelerinin bcrypt ile şifrelenip veritabanına eklenmesi gerekiyor
 kullanıcı siteye giriş yaptıgında konumunun alınması ve sehir seçilen alana aktarılamsı (tarayicidan konum erişimi vermemisse ip den konum verisi çekilmeli)
+index.js dosyasında kod tekrarı var fetch işlemini fonksiyona çevirerek çözulebilir gibi gorunuyor
 
+kitap silme işlemi muhtemelen dogru çalısıcak ama veritabanlarında elle silme yaptıgım için test edemiyorum şimdilik
 
 
 

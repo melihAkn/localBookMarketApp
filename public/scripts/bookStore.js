@@ -23,17 +23,17 @@ headers : {
             card.innerHTML = `
                 <div class="card-body">
                     <h5 class="card-title">${bookArray.name}</h5>
-                    <p class="card-text">Yayinci: ${bookArray.publisher}</p>
-                    <p class="card-text">Yazar: ${bookArray.author}</p>
-                    <p class="card-text">Stok: ${bookArray.stock}</p>
-                    <p class="card-text">Yayinlanma tarihi: ${bookArray.publicationDate}</p>
-                    <p class="card-text">Sayfa sayisi: ${bookArray.pageCount}</p>
-                    <p class="card-text">barkod no: ${bookArray.ISBN}</p>
-                    <p class="card-text">dil: ${bookArray.language}</p>
-                    <p class="card-text">kategori: ${bookArray.genre}</p>
-                    <p class="card-text">kitap aciklamasi: ${bookArray.description}</p>
-                    <p class="card-text">ortalama puan: ${bookArray.averageRating}</p>
-                    <p class="card-text">kirtasiye ismi: ${bookArray.addingBookStore}</p>
+                    <p class="card-Publisger">Yayinci: ${bookArray.publisher}</p>
+                    <p class="card-Author">Yazar: ${bookArray.author}</p>
+                    <p class="card-Stock">Stok: ${bookArray.stock}</p>
+                    <p class="card-PublishedDate">Yayinlanma tarihi: ${bookArray.publicationDate}</p>
+                    <p class="card-PageCount">Sayfa sayisi: ${bookArray.pageCount}</p>
+                    <p class="card-BarcodNo" name = "barkodNo">barkod no: ${bookArray.ISBN}</p>
+                    <p class="card-Lang">dil: ${bookArray.language}</p>
+                    <p class="card-Category">kategori: ${bookArray.genre}</p>
+                    <p class="card-BookDescription">kitap aciklamasi: ${bookArray.description}</p>
+                    <p class="card-AvgRate">ortalama puan: ${bookArray.averageRating}</p>
+                    <p class="card-BookStoreName">kirtasiye ismi: ${bookArray.addingBookStore}</p>
                     <button class = "card-BookUpdate" >guncelle</button>
                     <button class = "card-BookDelete" >sil</button>
                 </div>
@@ -55,7 +55,14 @@ headers : {
 
    deleteButtons.forEach(function (button) {
        button.addEventListener('click', function () {
-           console.log('Bu butona tıklandı!');
+           console.log('Bu butona tiklandi!');
+           let cardRemove = button.parentElement.parentElement
+           const barcodNo = cardRemove.childNodes[1].childNodes[13].textContent.replace('barkod no: ', '')
+           console.log(barcodNo)
+        
+           
+           //cardRemove.remove()
+           
 
            
        });

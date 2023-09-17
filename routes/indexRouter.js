@@ -20,6 +20,8 @@ indexRouter.post('/bookStoreAddBooks', bookStoreController.addBooks);
 indexRouter.get('/bookStoreUpdateInfos', indexController.bookStoreUpdateInfos);
 indexRouter.patch('/bookStoreUpdateInfos', bookStoreController.updateMyInfos);
 
+indexRouter.delete('/bookStoreDeleteBooks/:barcodNo', indexController.bookStoreDeleteBooks)
+
 indexRouter.get('/bookStore',indexController.bookStore)
 module.exports = indexRouter;
 

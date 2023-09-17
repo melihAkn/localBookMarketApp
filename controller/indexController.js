@@ -2,7 +2,7 @@ const NodeCache = require('node-cache');
 const apicache = require('../cache/apiCall');
 
 const bookStoreModel = require('../model/bookStores');
-
+const booksModel = require('../model/bookModel');
 const index = (req,res) => {
     res.render('index');
 }
@@ -67,6 +67,42 @@ const getBooksByCity = async (req,res) => {
     console.log(books)
         res.send(books);
 }
+
+
+const bookStoreDeleteBooks =async (req,res) => {
+    let filter = {ISBN : req.params.barcodNo}
+    const books = await booksModel.find(filter)
+    let bookStore
+    //console.log(books)
+    books.forEach(e => {
+        bookStore = e.addingBookStore
+    });
+    
+    if(!books){
+        res.send("girdiginiz barkod no ile eslesen kitap yok")
+    }else if(books){
+        
+        console.log("calis")
+        const dene = await bookStoreModel.find({bookStoreName : bookStore})
+      
+        console.log(dene)
+        console.log(bookStore)
+        dene[0].Books.forEach((e) => {
+             if(e.ISBN === req.params.barcodNo){
+             console.log(e)
+             console.log("esit")
+             e[0] = null
+            }
+        }); 
+    }
+    
+    await booksModel.deleteOne(filter)
+    res.send()
+
+
+}
+
+
 module.exports = {
     index,
     getCityNames,
@@ -78,4 +114,5 @@ module.exports = {
     bookStoreUpdateInfos,
     getCityNames,
     getBooksByCity,
+    bookStoreDeleteBooks
 }  
