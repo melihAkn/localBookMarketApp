@@ -19,7 +19,6 @@ const form = document.getElementById('myForm');
                description : formData.get('description'),
                averageRating : formData.get('averageRating')
            }
-      
         
         fetch('/index/bookStoreAddBooks', {
             method: 'POST',
@@ -27,17 +26,29 @@ const form = document.getElementById('myForm');
                 'Content-Type': 'application/json',
                  'Authorization' : `Bearer ${token}`,
         },
-           
             body: JSON.stringify(data),
         })
-        .then(data => {
+        .then(response => {
             // Backend'den dönen cevabı işle
-            console.log(data);
+            console.log(data); 
+            if (!response.ok) {
+                const errorMessage = response.headers.get('errormessage') 
+              throw new Error('HTTP error, status = '+response.status + errorMessage);
+            }
+            if(response.status == 200){
+                alert("kitap basari ile eklendi")
+                
+                //formdaki veriler silinsin
+            }else{
+            }
+            form.reset()
         })
+       
         .catch(error => {
-            console.error('Veri gönderimi başarısız oldu:', error);
+            alert( error.message);
         });
-    });
+    });   
+
     const logout = document.getElementById('logout')
 
     function logoutf() {

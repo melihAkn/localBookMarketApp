@@ -67,39 +67,7 @@ const getBooksByCity = async (req,res) => {
     console.log(books)
         res.send(books);
 }
-const bookStoreDeleteBooks =async (req,res) => {
-    let filter = {ISBN : req.params.barcodNo}
-    const books = await booksModel.find(filter)
-    let bookStore
-    console.log(books)
-    books.forEach(e => {
-        bookStore = e.addingBookStore
-    });
-    if(!books[0]){
-        res.send("girdiginiz barkod no ile eslesen kitap yok")
-        return
-    }else if(books){
-        const dene = await bookStoreModel.find({bookStoreName : bookStore})
-        let array = []
-        dene[0].Books.forEach((e) => {
-             if(e.ISBN === req.params.barcodNo){
-            } else{
-                array.push(e)
-            }
-        });
-        bookStoreModel.collection.updateOne(
-            { _id: dene[0]._id }, // Belgeyi tanımlayan koşul
-            { $set: { Books: [] } } // Diziyi boş bir dizi olarak güncelle
-    ); 
-    bookStoreModel.collection.updateOne(
-        { _id: dene[0]._id }, // Belgeyi tanımlayan koşul
-        { $set: { Books: array } } // Yeni diziyi belgeye ekleyin
-      );
-    } 
-    await booksModel.deleteOne(filter)
-    array = []
-    res.send("kitap basari ile silindi")
-}
+
  
 
 module.exports = {
@@ -113,5 +81,4 @@ module.exports = {
     bookStoreUpdateInfos,
     getCityNames,
     getBooksByCity,
-    bookStoreDeleteBooks
 }  

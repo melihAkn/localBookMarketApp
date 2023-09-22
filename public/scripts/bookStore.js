@@ -52,16 +52,28 @@ headers : {
 
        });
    });
-
    deleteButtons.forEach(function (button) {
        button.addEventListener('click', function () {
-           console.log('Bu butona tiklandi!');
            let cardRemove = button.parentElement.parentElement
            const barcodNo = cardRemove.childNodes[1].childNodes[13].textContent.replace('barkod no: ', '')
            console.log(barcodNo)
-        
+           const bookStoreDeleteUrl = `http://localhost:3000/index/bookStoreDeleteBooks/${barcodNo}`
+           fetch(bookStoreDeleteUrl, {
+            method : 'DELETE',
+            headers : {
+                Authorization : `Bearer ${token}`
+            }
+           })
+           .then(response => {
+            if(response.status == 200){
+                alert("kitap basari ile silindi")
+            }
+            else{
+                alert("kitap silinemedi")
+            }
+           })
            
-           //cardRemove.remove()
+           cardRemove.remove()
            
 
            

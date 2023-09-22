@@ -10,9 +10,8 @@ kullanıcı siteye giriş yaptıgında konumunun alınması ve sehir seçilen al
 index.js dosyasında kod tekrarı var fetch işlemini fonksiyona çevirerek çözulebilir gibi gorunuyor
 
 
-kitap ekleme işlemi yapıldıgında kullanıcıya geri bildirim gitmiyor kitap başarıyla eklendi gibi
-
-
+kitaplar silindinde yada herhangi bir işlem yapıldıgında alert ile kullanıcıya mesajı gostermek dogru bir metod mu
+token suresi dolunca server çökuyor bunu engellemem gerek
 
 ## kitap silme
 

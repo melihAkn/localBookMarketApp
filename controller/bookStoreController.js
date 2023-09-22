@@ -91,10 +91,12 @@ const addBooks = async (req, res) => {
         insertedBook.addingBookStore = findBookStore.bookStoreName;
         await insertedBook.save();
 
-        res.send('Kitap başarİyla eklendi');
+        res.send('Kitap başariyla eklendi');
+        
     } catch (err) {
+        res.setHeader('errorMessage', err.message); // Özel başlık ekleyin
         console.error('Hata oluştu:', err.message);
-        res.status(500).send('Bir hata oluştu');
+        res.status(500).json(err.message);
     }
 }
 
@@ -109,9 +111,6 @@ const getMyBooks = async (req, res) => {
     const findingBooks =await bookModel.find(filter2)
     //console.log(findingBooks)
     res.send(findingBooks);
-
-
-
 
 }
 
@@ -132,6 +131,45 @@ const updateMyInfos = async (req,res) => {
         res.send('hata')
     }
 }
+const deleteBooks = async (req,res) => {
+    const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
+
+    let booksFilter = {ISBN : req.params.barcodNo}
+    const books = await bookModel.find(booksFilter)
+    let bookStore
+    books.forEach(e => {
+        bookStore = e.addingBookStore
+    });
+    if(!books[0]){
+        res.send("girdiginiz barkod no ile eslesen kitap yok")
+        return
+    }else if(books){
+        const findedBookStore = await bookStoreModel.find({_id : jwtResult._id})
+        let array = []
+        findedBookStore[0].Books.forEach((e) => {
+             if(e.ISBN === req.params.barcodNo){
+            } else{
+                array.push(e)
+            }
+        });
+        bookStoreModel.collection.updateOne(
+            { _id: findedBookStore[0]._id }, // Belgeyi tanımlayan koşul
+            { $set: { Books: [] } } // Diziyi boş bir dizi olarak güncelle
+    ); 
+    bookStoreModel.collection.updateOne(
+        { _id: findedBookStore[0]._id }, // Belgeyi tanımlayan koşul
+        { $set: { Books: array } } // Yeni diziyi belgeye ekleyin
+      );
+    } 
+    await bookModel.deleteOne(booksFilter)
+    array = []
+    res.send("kitap basari ile silindi")
+
+}
+
+const updateBooks = async (req,res) => {
+
+}
 module.exports = {
     login,
     register,
@@ -139,4 +177,6 @@ module.exports = {
     getMyBooks,
     findMyInfos,
     updateMyInfos,
+    deleteBooks,
+    updateBooks
 };
