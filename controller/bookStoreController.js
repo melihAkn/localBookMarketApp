@@ -171,49 +171,48 @@ const updateBooks = async (req,res) => {
 
 const bulkAdd = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
-    console.log(req.body)
-    try {
+     try  {
         const findBookStore = await bookStoreModel.findById(jwtResult._id);
         if (!findBookStore) {
             return res.status(404).send('Kitap magazasi bulunamadi');
         }
-          fs.readFile('./mock/MOCK_DATA.json','utf8',(err,data) => {
+          fs.readFile('./mock/MOCK_DATA.json','utf8',async (err,data) => {
+            console.log(err)
             if(err) {
               console.log("error :" + err)
             }
-            const jsonData = JSON.parse(data)
-            jsonData.forEach(async e  => {
-            const newBook = {
-                name: e.name,
-                publisher: e.publisher,
-                author: e.author,
-                stock: estock,
-                publicationDate: e.publicationDate,
-                pageCount: e.pageCount,
-                ISBN: e.ISBN,
-                language: e.language,
-                genre: e.genre,
-                description:e.description,
-                averageRating:e.averageRating,
-            };
-            findBookStore.Books.push(newBook);
-    
-            await findBookStore.save();
-            const insertedBook = new bookModel(newBook);
-            insertedBook.addingBookStore = findBookStore.bookStoreName;
-            await insertedBook.save();
-          })
-          })
-        res.send('Kitaplar başariyla eklendi');
-        
+            const jsonData = JSON.parse(data);
+            console.log(jsonData)
+            const promises = jsonData.map(async (e) => {
+                const newBook = {
+                    name: e.name,
+                    publisher: e.publisher,
+                    author: e.author,
+                    stock: e.stock,
+                    publicationDate: e.publicationDate,
+                    pageCount: e.pageCount,
+                    ISBN: e.ISBN,
+                    language: e.language,
+                    genre: e.genre,
+                    description: e.description,
+                    averageRating: e.averageRating,
+                    addingBookStore : findBookStore.bookStoreName
+                };
+                const insertedBook = new bookModel(newBook);
+                findBookStore.Books.push(newBook);
+                //await findBookStore.save()
+                await Promise.all(findBookStore.save())
+                await insertedBook.save();
+               // await Promise.all([insertedBook.save(),findBookStore.save() ]);
+            });
+            await Promise.all(promises);
+          }) 
+    res.send('Kitaplar başariyla eklendi');
+         
     } catch (err) {
-        res.setHeader('errorMessage', err.message); // Özel başlık ekleyin
         console.error('Hata oluştu:', err.message);
         res.status(500).json(err.message);
     }
-
-
-      
 }
 module.exports = {
     login,
