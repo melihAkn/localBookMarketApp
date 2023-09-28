@@ -13,13 +13,6 @@ index.js dosyasında kod tekrarı var fetch işlemini fonksiyona çevirerek çö
 kitaplar silindinde yada herhangi bir işlem yapıldıgında alert ile kullanıcıya mesajı gostermek dogru bir metod mu
 token suresi dolunca server çökuyor bunu engellemem gerek
 
-## kitap silme
-
-
-## kitap guncelleme
-
-
-## tum kitapları silme (belki)
 
 
 ## proje bittigi zaman

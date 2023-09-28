@@ -31,7 +31,6 @@ const getCityNames = (req,res) => {
 const getBooks = async (req,res) => {
     const searchedCity = req.params.city;
     const searchedName = req.params.name;
-    console.log(searchedCity +" " + searchedName)
     let filter = {bookStoreCity : searchedCity };
 
     const findedBookStore = await bookStoreModel.find(filter);
@@ -46,13 +45,11 @@ const getBooks = async (req,res) => {
             }
         }) 
     });
-    console.log(books)
         res.send(books);
     
 }
 const getBooksByCity = async (req,res) => {
     const searchedCity = req.params.city;
-    console.log(searchedCity)
     let filter = {bookStoreCity : searchedCity };
     const findedBookStore = await bookStoreModel.find(filter);
     let books = [];
@@ -64,7 +61,6 @@ const getBooksByCity = async (req,res) => {
             }
         }) 
     });
-    console.log(books)
         res.send(books);
 }
 

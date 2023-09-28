@@ -34,7 +34,6 @@ headers : {
                     <p class="card-BookDescription">kitap aciklamasi: ${bookArray.description}</p>
                     <p class="card-AvgRate">ortalama puan: ${bookArray.averageRating}</p>
                     <p class="card-BookStoreName">kirtasiye ismi: ${bookArray.addingBookStore}</p>
-                    <button class = "card-BookUpdate" >guncelle</button>
                     <button class = "card-BookDelete" >sil</button>
                 </div>
             `;
@@ -42,16 +41,8 @@ headers : {
     });
 })
 .then( _ => {
-   const updateButtons = document.querySelectorAll('.card-BookUpdate');
    const deleteButtons = document.querySelectorAll('.card-BookDelete');
    // Her bir buton için aynı işlevi atan bir olay dinleyicisi ekleyin
-   updateButtons.forEach(function (button) {
-       button.addEventListener('click', function () {
-           console.log('Bu butona tıklandı!');
-
-
-       });
-   });
    deleteButtons.forEach(function (button) {
        button.addEventListener('click', function () {
            let cardRemove = button.parentElement.parentElement

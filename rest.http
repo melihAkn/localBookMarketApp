@@ -73,7 +73,9 @@ DELETE {{BASE_URL}}/index/bookStoreDeleteBooks/1234567894
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjODgxZDMxNGFmNjQ4ZWNjMTc2YjAiLCJpYXQiOjE2OTUzNjY1NTIsImV4cCI6MTY5NTM3MDE1Mn0.-FgUILugC_WktneiIPOuKyoHMPcqLXAbHoTugvvk8kY
 
-
+GET {{BASE_URL}}/bookStore/bulkAdd
+Content-Type:  application/json
+Authorization: 
 
 
 

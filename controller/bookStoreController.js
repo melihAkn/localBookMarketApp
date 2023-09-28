@@ -1,7 +1,7 @@
 //
 const bookModel = require('../model/bookModel');
 const bookStoreModel = require('../model/bookStores');
-
+const fs = require('fs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secretKey = process.env.SECRET_KEY;
@@ -13,7 +13,6 @@ const login = async (req, res) => {
     }
     try {
         const bookStore = await bookStoreModel.login(req.body.bookStoreUserName , req.body.bookStorePassword);
-        console.log(bookStore)
         if(!bookStore.hata){
             const token = await bookStore.generateToken();
             responseMessage.token = token;
@@ -24,7 +23,6 @@ const login = async (req, res) => {
         else{
             responseMessage.message = "email/username or password wrong";
             res.render('bookStoreLogin',{message : bookStore})
-            console.log("e")
         }
        
     } catch (error) {
@@ -170,6 +168,53 @@ const deleteBooks = async (req,res) => {
 const updateBooks = async (req,res) => {
 
 }
+
+const bulkAdd = async (req,res) => {
+    const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
+    console.log(req.body)
+    try {
+        const findBookStore = await bookStoreModel.findById(jwtResult._id);
+        if (!findBookStore) {
+            return res.status(404).send('Kitap magazasi bulunamadi');
+        }
+          fs.readFile('./mock/MOCK_DATA.json','utf8',(err,data) => {
+            if(err) {
+              console.log("error :" + err)
+            }
+            const jsonData = JSON.parse(data)
+            jsonData.forEach(async e  => {
+            const newBook = {
+                name: e.name,
+                publisher: e.publisher,
+                author: e.author,
+                stock: estock,
+                publicationDate: e.publicationDate,
+                pageCount: e.pageCount,
+                ISBN: e.ISBN,
+                language: e.language,
+                genre: e.genre,
+                description:e.description,
+                averageRating:e.averageRating,
+            };
+            findBookStore.Books.push(newBook);
+    
+            await findBookStore.save();
+            const insertedBook = new bookModel(newBook);
+            insertedBook.addingBookStore = findBookStore.bookStoreName;
+            await insertedBook.save();
+          })
+          })
+        res.send('Kitaplar başariyla eklendi');
+        
+    } catch (err) {
+        res.setHeader('errorMessage', err.message); // Özel başlık ekleyin
+        console.error('Hata oluştu:', err.message);
+        res.status(500).json(err.message);
+    }
+
+
+      
+}
 module.exports = {
     login,
     register,
@@ -178,5 +223,6 @@ module.exports = {
     findMyInfos,
     updateMyInfos,
     deleteBooks,
-    updateBooks
+    updateBooks,
+    bulkAdd
 };

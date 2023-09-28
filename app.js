@@ -36,6 +36,3 @@ marketApp.listen(3000, _ => {
     console.log("server 3000 portundan ayaklandi");
 })
 
-
-
-
