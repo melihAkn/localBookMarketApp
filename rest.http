@@ -38,9 +38,9 @@ Content-Type: application/json
 ###
 POST {{BASE_URL}}/bookStore/addBooks
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYyZDM5NDY0N2Q2ODhiZmM1YzBlYzgiLCJpYXQiOjE2OTM2NTUxNzUsImV4cCI6MTY5MzY1ODc3NX0.bEQgcA215NEXmKP6qwdXHaBtpP-ESy__vxh6UgYx51I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTE2ODFiNzM5ZTQ0ZTIwNDhmMzM3N2UiLCJpYXQiOjE2OTU5NzM4MTgsImV4cCI6MTY5NTk3NzQxOH0.Wg6cvzgM-OPoQA-LCU58nqFem7C13bBe-dTKbzc0NLE
 
-{
+{    
     "name" : "vvv",
     "publisher" : "pegasus",
     "author" : "mehmet",
@@ -52,6 +52,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGYyZDM5N
     "genre" : "action",
     "description" : "eeerrereee",
     "averageRating" : "3.5"
+
 }
 
 ###
@@ -77,8 +78,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjODgxZ
 ###
 GET {{BASE_URL}}/bookStore/bulkAddBooks
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTE1ZGY0YzFjMTE5Zjg5MjU0YTJkN2MiLCJpYXQiOjE2OTU5MzIyNTEsImV4cCI6MTY5NTkzNTg1MX0.OCYC2GJNA2uqeyf_752r6E8LqPPqBYPMk720hsBQpck
-
-
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTE2OGQ0YTA3MjBjMzNhMmZjZDE4ZTUiLCJpYXQiOjE2OTU5NzY3ODIsImV4cCI6MTY5NTk4MDM4Mn0.LQVvlAkaktWz5nYdtSHeXTfLWpJoGwpWYjBbkmd2sOY

@@ -176,14 +176,17 @@ const bulkAdd = async (req,res) => {
         if (!findBookStore) {
             return res.status(404).send('Kitap magazasi bulunamadi');
         }
-          fs.readFile('./mock/MOCK_DATA.json','utf8',async (err,data) => {
-            console.log(err)
-            if(err) {
-              console.log("error :" + err)
+     
+        fs.readFile('./mock/MOCK_DATA.json', 'utf8', async (err, data) => {
+            if (err) {
+                console.error("Hata :" + err);
+                return;
             }
+        
             const jsonData = JSON.parse(data);
-            console.log(jsonData)
-            const promises = jsonData.map(async (e) => {
+            
+            // forEach yerine for...of kullanarak sırayla işlem yapabiliriz
+            for (const e of jsonData) {
                 const newBook = {
                     name: e.name,
                     publisher: e.publisher,
@@ -196,24 +199,29 @@ const bulkAdd = async (req,res) => {
                     genre: e.genre,
                     description: e.description,
                     averageRating: e.averageRating,
-                    addingBookStore : findBookStore.bookStoreName
                 };
+        
                 const insertedBook = new bookModel(newBook);
-                findBookStore.Books.push(newBook);
-                //await findBookStore.save()
-                await Promise.all(findBookStore.save())
-                await insertedBook.save();
-               // await Promise.all([insertedBook.save(),findBookStore.save() ]);
-            });
-            await Promise.all(promises);
-          }) 
+                insertedBook.addingBookStore = findBookStore.bookStoreName;
+                
+                // await ile veritabanına kaydet
+                try {
+                    await insertedBook.save();
+                    findBookStore.Books.push(newBook);
+                    await findBookStore.save();
+                } catch (error) {
+                    console.error("Hata oluştu:", error);
+                }
+            }
+        });
+          
     res.send('Kitaplar başariyla eklendi');
          
     } catch (err) {
         console.error('Hata oluştu:', err.message);
         res.status(500).json(err.message);
     }
-}
+} 
 module.exports = {
     login,
     register,
