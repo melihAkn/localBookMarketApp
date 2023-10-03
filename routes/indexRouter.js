@@ -1,6 +1,11 @@
 const indexRouter = require('express').Router();
 const indexController = require('../controller/indexController');
 const bookStoreController = require('../controller/bookStoreController');
+
+//multer
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 indexRouter.get('/', indexController.index);
 
 indexRouter.get('/getCityNames', indexController.getCityNames);
@@ -20,8 +25,10 @@ indexRouter.post('/bookStoreAddBooks', bookStoreController.addBooks);
 indexRouter.get('/bookStoreUpdateInfos', indexController.bookStoreUpdateInfos);
 indexRouter.patch('/bookStoreUpdateInfos', bookStoreController.updateMyInfos);
 
-indexRouter.get('/bookStoreBulkAddBooks',indexController.bulkAddPage)
-indexRouter.post('/bookStoreBulkAddBooks',bookStoreController.bulkAdd)
+indexRouter.get('/bookStoreBulkAddBook',indexController.bulkAddPage)
+//indexRouter.post('/bookStoreBulkAddBooks',bookStoreController.bulkAdd)
+
+indexRouter.post('/bookStoreBulkAddBook', upload.single('jsonFile'), bookStoreController.bulkAdd);
 
 indexRouter.delete('/bookStoreDeleteBooks/:barcodNo', bookStoreController.deleteBooks);
 

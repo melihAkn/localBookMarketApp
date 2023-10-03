@@ -76,6 +76,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjODgxZ
 
 
 ###
-GET {{BASE_URL}}/bookStore/bulkAddBooks
+GET {{BASE_URL}}/index/bookStoreBulkAddBook
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTE2OGQ0YTA3MjBjMzNhMmZjZDE4ZTUiLCJpYXQiOjE2OTU5NzY3ODIsImV4cCI6MTY5NTk4MDM4Mn0.LQVvlAkaktWz5nYdtSHeXTfLWpJoGwpWYjBbkmd2sOY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTE2OGQ0YTA3MjBjMzNhMmZjZDE4ZTUiLCJpYXQiOjE2OTYzNjI3OTcsImV4cCI6MTY5NjM2NjM5N30.3X4lJHa2x12lp3GDOtzf7-noOWxsACcX2apPTZ4R7ys
+
+
+
+
+
+
+
+

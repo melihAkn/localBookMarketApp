@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secretKey = process.env.SECRET_KEY;
 
+
+
+
 const login = async (req, res) => {
     let responseMessage ={
         message : "",
@@ -171,21 +174,19 @@ const updateBooks = async (req,res) => {
 
 const bulkAdd = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
-     try  {
+    const jsonFile = req.file;
+
+    if (!jsonFile) {
+        return res.status(400).json({ error: 'Dosya yüklenmedi.' });
+    }
+
+    try {
+        const jsonData = JSON.parse(jsonFile.buffer.toString());
+        console.log(jsonData)
         const findBookStore = await bookStoreModel.findById(jwtResult._id);
         if (!findBookStore) {
             return res.status(404).send('Kitap magazasi bulunamadi');
         }
-     
-        fs.readFile('./mock/MOCK_DATA.json', 'utf8', async (err, data) => {
-            if (err) {
-                console.error("Hata :" + err);
-                return;
-            }
-        
-            const jsonData = JSON.parse(data);
-            
-            // forEach yerine for...of kullanarak sırayla işlem yapabiliriz
             for (const e of jsonData) {
                 const newBook = {
                     name: e.name,
@@ -213,15 +214,13 @@ const bulkAdd = async (req,res) => {
                     console.error("Hata oluştu:", error);
                 }
             }
-        });
-          
-    res.send('Kitaplar başariyla eklendi');
-         
-    } catch (err) {
-        console.error('Hata oluştu:', err.message);
-        res.status(500).json(err.message);
+        return res.status(200).json({ message: 'Dosya başarıyla işlendi ve Kitaplar başariyla eklendi.' });
+    } catch (error) {
+        return res.status(400).json({ error: 'Geçerli bir JSON dosyası değil.' });
     }
 } 
+
+
 module.exports = {
     login,
     register,

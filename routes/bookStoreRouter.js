@@ -9,6 +9,5 @@ bookStoreRouter.get("/getMyBooks",bookstoreController.getMyBooks);
 
 bookStoreRouter.get('/findMyInfos',bookstoreController.findMyInfos);
 
-bookStoreRouter.get('/bulkAddBooks',bookstoreController.bulkAdd);
 module.exports = bookStoreRouter;
  
