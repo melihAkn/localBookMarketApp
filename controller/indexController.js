@@ -63,7 +63,9 @@ const getBooksByCity = async (req,res) => {
     });
         res.send(books);
 }
-
+const bulkAddPage = (req,res) => {
+    res.render('bookStoreBulkAdd')
+}
  
 
 module.exports = {
@@ -77,4 +79,5 @@ module.exports = {
     bookStoreUpdateInfos,
     getCityNames,
     getBooksByCity,
-}  
+    bulkAddPage
+}

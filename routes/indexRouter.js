@@ -20,6 +20,9 @@ indexRouter.post('/bookStoreAddBooks', bookStoreController.addBooks);
 indexRouter.get('/bookStoreUpdateInfos', indexController.bookStoreUpdateInfos);
 indexRouter.patch('/bookStoreUpdateInfos', bookStoreController.updateMyInfos);
 
+indexRouter.get('/bookStoreBulkAddBooks',indexController.bulkAddPage)
+indexRouter.post('/bookStoreBulkAddBooks',bookStoreController.bulkAdd)
+
 indexRouter.delete('/bookStoreDeleteBooks/:barcodNo', bookStoreController.deleteBooks);
 
 indexRouter.patch('/bookStoreUpdateBooks',bookStoreController.updateBooks)

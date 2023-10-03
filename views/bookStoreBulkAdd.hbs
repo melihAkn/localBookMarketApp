@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Kirtasiye Yönetim Paneli</title>
+    <title>Kirtasiye Yönetim Paneli</title>
       <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-      <link rel="stylesheet" href="/css/bookStore.css">
+      <link rel="stylesheet" href="/css/bookStoreBulkAdd.css">
       <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header>
+      <header>
         <h1>Kirtasiye Yönetim Paneli</h1>
         <nav>
             <ul>
@@ -22,13 +22,18 @@
         </nav>
     </header>
 
-<div class="card-container">
+    <!-- Dosya Seçme Alanı -->
+    <img src="/images/jsonFileTemplate.png" >
+    <p>ekleyeceginiz her bir kitap için json verisi bu şekilde olmali</p>
+    <input type="file" id="jsonFileInput">
+    <!-- JSON Verilerini Ekleme Düğmesi -->
+<button class="" id="jsonFileAdd">JSON Verilerini Ekle</button>
 
+
+<div class="card-container">
      </div>
-    
-    <script src="../scripts/bookStore.js">
+       <script src="../scripts/bookStoreBulkAdd.js">
 
     </script>
 </body>
 </html>
-  
