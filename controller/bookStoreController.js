@@ -175,7 +175,11 @@ const updateBooks = async (req,res) => {
 const bulkAdd = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     const jsonFile = req.file;
-
+    console.log(jwtResult)
+    console.log(jsonFile)
+    if(!jwtResult){
+        return res.status(400).json({ error: 'token hatasi' });
+    }
     if (!jsonFile) {
         return res.status(400).json({ error: 'Dosya yüklenmedi.' });
     }

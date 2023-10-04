@@ -75,9 +75,9 @@ const bookStoreSchema = new schema({
 },{collecions : 'BookStore',timestamps : true});
 
 
-bookStoreSchema.methods.generateToken = async function(){
+bookStoreSchema.methods.generateToken =  function(){
     const loginnedBookStore = this;
-    const token = await jwt.sign({_id:loginnedBookStore._id},
+    const token =  jwt.sign({_id:loginnedBookStore._id},
         `${secretKey}`,{expiresIn:'1h'});
     return token;
 }

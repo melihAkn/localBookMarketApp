@@ -31,8 +31,8 @@ POST {{BASE_URL}}/bookStore/login
 Content-Type: application/json
 
 {
-    "bookStoreUserName" : "wewe",
-    "bookStorePassword" : "wewewewe"
+    "bookStoreUserName" : "eden",
+    "bookStorePassword" : "eden12345"
 }
 
 ###
@@ -78,11 +78,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBjODgxZ
 ###
 GET {{BASE_URL}}/index/bookStoreBulkAddBook
 Content-Type:  application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTE2OGQ0YTA3MjBjMzNhMmZjZDE4ZTUiLCJpYXQiOjE2OTYzNjI3OTcsImV4cCI6MTY5NjM2NjM5N30.3X4lJHa2x12lp3GDOtzf7-noOWxsACcX2apPTZ4R7ys
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkMTdmZmRlNzkyODRkNDc1MmZhOTEiLCJpYXQiOjE2OTY0MDU2NjEsImV4cCI6MTY5NjQwOTI2MX0.aHbkVJmXV0r-HrRrXBteqF8H7N54vEyksTn7LNvU3LM
 
+###
+POST {{BASE_URL}}/index/bookStoreBulkAddBook
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTFkMTdmZmRlNzkyODRkNDc1MmZhOTEiLCJpYXQiOjE2OTY0MDU2NjEsImV4cCI6MTY5NjQwOTI2MX0.aHbkVJmXV0r-HrRrXBteqF8H7N54vEyksTn7LNvU3LM
 
+{
 
-
+}
 
 
 
