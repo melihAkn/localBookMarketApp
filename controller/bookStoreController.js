@@ -175,17 +175,18 @@ const updateBooks = async (req,res) => {
 const bulkAdd = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     const jsonFile = req.file;
-    console.log(jwtResult)
-    console.log(jsonFile)
-    if(!jwtResult){
-        return res.status(400).json({ error: 'token hatasi' });
-    }
+    console.log(req.file)
+   
     if (!jsonFile) {
         return res.status(400).json({ error: 'Dosya yüklenmedi.' });
     }
 
     try {
-        const jsonData = JSON.parse(jsonFile.buffer.toString());
+        fs.readFile(req.file.path,'utf-8' ,async (err,data) => {
+            if (err) {
+                console.error('Dosya okuma hatası:', err);
+            }
+        const jsonData = JSON.parse(data)
         console.log(jsonData)
         const findBookStore = await bookStoreModel.findById(jwtResult._id);
         if (!findBookStore) {
@@ -205,22 +206,26 @@ const bulkAdd = async (req,res) => {
                     description: e.description,
                     averageRating: e.averageRating,
                 };
-        
+                console.log(newBook)
                 const insertedBook = new bookModel(newBook);
                 insertedBook.addingBookStore = findBookStore.bookStoreName;
                 
                 // await ile veritabanına kaydet
+                
                 try {
                     await insertedBook.save();
                     findBookStore.Books.push(newBook);
                     await findBookStore.save();
                 } catch (error) {
                     console.error("Hata oluştu:", error);
+                    return
                 }
             }
-        return res.status(200).json({ message: 'Dosya başarıyla işlendi ve Kitaplar başariyla eklendi.' });
+          
+        })
+        return res.status(200).send({ message: 'Dosya başariyla işlendi ve Kitaplar başariyla eklendi.' });
     } catch (error) {
-        return res.status(400).json({ error: 'Geçerli bir JSON dosyası değil.' });
+        return res.status(400).send({ error: 'Geçerli bir JSON dosyasi değil.' });
     }
 } 
 

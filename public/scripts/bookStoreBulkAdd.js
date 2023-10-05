@@ -3,14 +3,14 @@ console.log(token)
 const form = document.getElementById('uploadForm')
 const jsonFileInput = document.getElementById('jsonFileInput')
 const backendURL = "http://localhost:3000/index/bookStoreBulkAddBook"
-const formData = new FormData();
-formData.append('file', jsonFileInput); // jsonFileInput, input element'inden alınan dosyayı temsil eder
-formData.append('data', JSON.stringify(yourDataObject)); // yourDataObject, JSON verisini temsil eder
+
+
 
 form.addEventListener('submit', function() {
     event.preventDefault(); // Sayfanın yeniden yüklenmesini önlemek için
-    console.log(jsonFileInput)
-
+    console.log(jsonFileInput.files[0])
+    const formData = new FormData();
+    formData.append('jsonFile', jsonFileInput.files[0]); // jsonFileInput, input element'inden alınan dosyayı temsil eder
 fetch(backendURL,
 {
     method : 'POST',

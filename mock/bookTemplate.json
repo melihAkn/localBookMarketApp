@@ -1,13 +1,3 @@
-{
-"name":"name",
-"publisher":"publisher",
-"author":" author",
-"stock":1,
-"publicationDate":"11/10/2023",
-"pageCount":1434,
-"ISBN":"326340197-1",
-"language":"Swahili",
-"genre":"Drama|Musical|Romance",
-"description":"implement rich vortals",
-"averageRating":2
-}
+[
+    {"name":"name","publisher":"publisher","author":" author","stock":1,"publicationDate":"11/10/2023","pageCount":1434,"ISBN":"326340197-1","language":"Swahili","genre":"Drama|Musical|Romance","description":"implement rich vortals","averageRating":2}
+]

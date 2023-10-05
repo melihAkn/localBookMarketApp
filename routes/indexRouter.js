@@ -1,11 +1,26 @@
 const indexRouter = require('express').Router();
 const indexController = require('../controller/indexController');
 const bookStoreController = require('../controller/bookStoreController');
-
+const fs = require('fs');
 //multer
 const multer = require('multer');
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        if (!fs.existsSync('uploads')) {
+            // Klasör yoksa oluştur
+            fs.mkdirSync('uploads');
+          }
+      cb(null, 'uploads/') // Dosyaların yükleneceği klasörü belirtin
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname) // Dosya adını belirleyin
+    }
+  });
+  const upload = multer({ storage: storage });
+
+
+
 indexRouter.get('/', indexController.index);
 
 indexRouter.get('/getCityNames', indexController.getCityNames);
