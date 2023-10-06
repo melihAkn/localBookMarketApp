@@ -65,7 +65,7 @@ form.addEventListener('submit', function() {
         alert(data)
      })
      .catch(error => {
-         console.error('Veri gönderimi başarısız oldu:', error);
+         console.error('The data submission has failed:', error);
      });
 });
 const logout = document.getElementById('logout')

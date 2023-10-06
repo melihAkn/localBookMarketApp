@@ -14,7 +14,7 @@ fetch(cityApiUrl)
         });
     })
     .catch(error => {
-        console.error("API çağrisi başarisiz oldu:", error);
+        console.error("API call error:", error);
     });
 
 
@@ -30,7 +30,7 @@ fetch(cityApiUrl)
     })
     .then(response => alert(response))
     .catch(error => {
-        console.error('Veri gönderimi başarısız oldu:', error);
+        console.error('The data submission has failed:', error);
         
     
     });

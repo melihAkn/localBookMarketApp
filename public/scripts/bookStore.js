@@ -57,10 +57,10 @@ headers : {
            })
            .then(response => {
             if(response.status == 200){
-                alert("kitap basari ile silindi")
+                alert("book delete succesfully")
             }
             else{
-                alert("kitap silinemedi")
+                alert("book cannot delete")
             }
            })
            
@@ -72,7 +72,7 @@ headers : {
    });
 })
 .catch(error => {
-    console.error("API çağrisi başarisiz oldu:", error);
+    console.error("api call error:", error);
 });
 }
 

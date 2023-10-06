@@ -17,7 +17,7 @@ const  getCityOptions = async _ => {
         performSearchByCity()
     })
     .catch(error => {
-        console.error("API çağrisi başarisiz oldu:", error);
+        console.error("API call error:", error);
     });
 }
 const getData = (url) => {
@@ -49,22 +49,21 @@ const getData = (url) => {
                 cardContainer.appendChild(card);
         });  
         if (cardContainer.children.length === 0) {
-            console.log('Div içeriği boş.');
+            console.log('Div content empty.');
             const message = document.createElement("p")
-            message.innerHTML = "girdiginiz kitap sehrinizde yok yada yanlis girdiniz"
+            message.innerHTML = "The book you entered is not in our inventory or you entered it incorrectly"
             cardContainer.appendChild(message)
         } else {
         }
     })
     .catch(error => {
-        console.error("API çağrisi başarisiz oldu:", error);
+        console.error("API call error:", error);
     });
 }
 function performSearch() {
     const searchInput = document.querySelector('input[type="text"]');
     const searchValue = searchInput.value;
     if (searchValue.length === 0) {
-        // Kullanıcı hiçbir değer sağlamadı.
         performSearchByCity()
         return
     }

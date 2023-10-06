@@ -75,12 +75,6 @@ const bookSchema = new schema ({
         type : String,
         required : false
     }
-  
-/*
-bunlar duruma gore daha sonra eklenmeli
-kitapKapakResmi: Kitabın kapak resminin URL'si veya dosya yolu.
-kitapEtiketler: Kitabı daha iyi tanımlamak için kullanılabilecek etiketler veya anahtar kelimeler
-*/
 
 },{collection:'books', timestamps: true});
 

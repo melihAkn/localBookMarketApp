@@ -1,4 +1,4 @@
-//gerekli paketler
+//necessary packages
 const express = require('express');
 const mongoose = require('mongoose');
 const hbs = require('hbs');
@@ -7,7 +7,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 require('./cache/apiCall');
-//uygulamanın başlatılması
+//app start
 marketApp = express();
 marketApp.use(express.json());
 marketApp.use(express.urlencoded({ extended:true}));
@@ -24,14 +24,14 @@ mongoose.connect(`${connectionString}`, {
 const indexRouter = require('./routes/indexRouter');
 const bookStoreRouter = require('./routes/bookStoreRouter');
 
-//rota tanimi ve template engine ayarlaması
+//route and template engine settings
 marketApp.use('/index', indexRouter);
 marketApp.use('/bookStore', bookStoreRouter);
 marketApp.use(cookieParser());
 marketApp.set('view engine', 'hbs');
 marketApp.set('views', path.join(__dirname, 'views'));
 marketApp.use(express.static('public'));
-//server başlangici
+//server start
 marketApp.listen(3000, _ => {
     console.log("server 3000 portundan ayaklandi");
 })

@@ -11,7 +11,7 @@ fetch('/index/bookStoreLogin', {
     console.log(response)
 })
 .catch(error => {
-    console.error('Veri gönderimi başarısız oldu:', error);
+    console.error('The data submission has failed:', error);
     
 
 });

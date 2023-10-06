@@ -5,9 +5,6 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secretKey = process.env.SECRET_KEY;
 
-
-
-
 const login = async (req, res) => {
     let responseMessage ={
         message : "",
@@ -26,14 +23,11 @@ const login = async (req, res) => {
             responseMessage.message = "email/username or password wrong";
             res.render('bookStoreLogin',{message : bookStore})
         }
-       
     } catch (error) {
         console.log(error.message);     
     }
-    
-   
-
 }
+
 const register = async (req, res)  => {
     const insertedBookStore = new bookStoreModel(req.body);
     let responseMessage = {}
@@ -47,28 +41,23 @@ const register = async (req, res)  => {
         }
     } catch (error) {
          responseMessage = { message: "An error occurred during registration", error : error.message };
-        
     }
     if(!responseMessage.error ){
         console.log(responseMessage)
         res.redirect('/index/bookStoreLogin');
-        
     }
     else{
         res.render('bookStoreRegister', {responseMessage})
     }
-   
 }
-
 const addBooks = async (req, res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     console.log(req.body)
     try {
         const findBookStore = await bookStoreModel.findById(jwtResult._id);
         if (!findBookStore) {
-            return res.status(404).send('Kitap mağazasİ bulunamadİ');
+            return res.status(404).send('cannot find bookStore');
         }
-
         const newBook = {
             name: req.body.name,
             publisher: req.body.publisher,
@@ -84,56 +73,43 @@ const addBooks = async (req, res) => {
             ownedBookStore : findBookStore.bookStoreName
         };
         findBookStore.Books.push(newBook);
-
         await findBookStore.save();
-
         const insertedBook = new bookModel(req.body);
         insertedBook.addingBookStore = findBookStore.bookStoreName;
         await insertedBook.save();
-
-        res.send('Kitap başariyla eklendi');
-        
+        res.send('book was added succesfully');
     } catch (err) {
-        res.setHeader('errorMessage', err.message); // Özel başlık ekleyin
-        console.error('Hata oluştu:', err.message);
+        res.setHeader('errorMessage', err.message);
+        console.error('error:', err.message);
         res.status(500).json(err.message);
     }
 }
-
 const getMyBooks = async (req, res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     const filter = { _id : jwtResult._id}
-
     const bookStore = await bookStoreModel.find(filter)
     //console.log(bookStore[0].bookStoreName);
     const filter2 = {addingBookStore : bookStore[0].bookStoreName}
-    
     const findingBooks =await bookModel.find(filter2)
     //console.log(findingBooks)
     res.send(findingBooks);
-
 }
-
 const findMyInfos = async (req,res)  => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     const filter = { _id : jwtResult._id};
     const bookStore = await bookStoreModel.find(filter ,{ _id: 0 , Books : 0 ,createdAt : 0 , updatedAt : 0, __v : 0 });
     res.send(bookStore);
 }
-
 const updateMyInfos = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     const filter = { _id : jwtResult._id};
     const update = await bookStoreModel.updateOne(filter, { $set: req.body });
     if(update) {
-        res.send('islem basarili')
-    }else {
-        res.send('hata')
+        res.send('success')
     }
 }
 const deleteBooks = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
-
     let booksFilter = {ISBN : req.params.barcodNo}
     const books = await bookModel.find(booksFilter)
     let bookStore
@@ -141,7 +117,7 @@ const deleteBooks = async (req,res) => {
         bookStore = e.addingBookStore
     });
     if(!books[0]){
-        res.send("girdiginiz barkod no ile eslesen kitap yok")
+        res.send("The entered barcode does not match any book.")
         return
     }else if(books){
         const findedBookStore = await bookStoreModel.find({_id : jwtResult._id})
@@ -153,43 +129,36 @@ const deleteBooks = async (req,res) => {
             }
         });
         bookStoreModel.collection.updateOne(
-            { _id: findedBookStore[0]._id }, // Belgeyi tanımlayan koşul
-            { $set: { Books: [] } } // Diziyi boş bir dizi olarak güncelle
+            { _id: findedBookStore[0]._id },
+            { $set: { Books: [] } } 
     ); 
     bookStoreModel.collection.updateOne(
-        { _id: findedBookStore[0]._id }, // Belgeyi tanımlayan koşul
-        { $set: { Books: array } } // Yeni diziyi belgeye ekleyin
+        { _id: findedBookStore[0]._id }, 
+        { $set: { Books: array } } 
       );
     } 
     await bookModel.deleteOne(booksFilter)
     array = []
-    res.send("kitap basari ile silindi")
-
+    res.send("Book successfully deleted")
 }
-
-const updateBooks = async (req,res) => {
-
-}
-
 const bulkAdd = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     const jsonFile = req.file;
     console.log(req.file)
    
     if (!jsonFile) {
-        return res.status(400).json({ error: 'Dosya yüklenmedi.' });
+        return res.status(400).json({ error: 'file not uploaded.' });
     }
-
     try {
         fs.readFile(req.file.path,'utf-8' ,async (err,data) => {
             if (err) {
-                console.error('Dosya okuma hatası:', err);
+                console.error('file read error:', err);
             }
         const jsonData = JSON.parse(data)
         console.log(jsonData)
         const findBookStore = await bookStoreModel.findById(jwtResult._id);
         if (!findBookStore) {
-            return res.status(404).send('Kitap magazasi bulunamadi');
+            return res.status(404).send('cannot find bookStore');
         }
             for (const e of jsonData) {
                 const newBook = {
@@ -209,22 +178,20 @@ const bulkAdd = async (req,res) => {
                 const insertedBook = new bookModel(newBook);
                 insertedBook.addingBookStore = findBookStore.bookStoreName;
                 
-                // await ile veritabanına kaydet
-                
                 try {
                     await insertedBook.save();
                     findBookStore.Books.push(newBook);
                     await findBookStore.save();
                 } catch (error) {
-                    console.error("Hata oluştu:", error);
+                    console.error("error:", error);
                     return
                 }
             }
           
         })
-        return res.status(200).send({ message: 'Dosya başariyla işlendi ve Kitaplar başariyla eklendi.' });
+        return res.status(200).send({ message: 'The file has been successfully processed, and the books have been added successfully.' });
     } catch (error) {
-        return res.status(400).send({ error: 'Geçerli bir JSON dosyasi değil.' });
+        return res.status(400).send({ error: 'Its not a valid JSON file.' });
     }
 } 
 
@@ -237,6 +204,5 @@ module.exports = {
     findMyInfos,
     updateMyInfos,
     deleteBooks,
-    updateBooks,
     bulkAdd
 };
