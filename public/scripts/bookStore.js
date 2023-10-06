@@ -33,7 +33,6 @@ headers : {
                     <p class="card-Category">kategori: ${bookArray.genre}</p>
                     <p class="card-BookDescription">kitap aciklamasi: ${bookArray.description}</p>
                     <p class="card-AvgRate">ortalama puan: ${bookArray.averageRating}</p>
-                    <p class="card-BookStoreName">kirtasiye ismi: ${bookArray.addingBookStore}</p>
                     <button class = "card-BookDelete" >sil</button>
                 </div>
             `;

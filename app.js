@@ -6,7 +6,6 @@ const axios = require('axios');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-require('./cache/apiCall');
 //app start
 marketApp = express();
 marketApp.use(express.json());

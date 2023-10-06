@@ -47,8 +47,6 @@ indexRouter.post('/bookStoreBulkAddBook', upload.single('jsonFile'), bookStoreCo
 
 indexRouter.delete('/bookStoreDeleteBooks/:barcodNo', bookStoreController.deleteBooks);
 
-indexRouter.patch('/bookStoreUpdateBooks',bookStoreController.updateBooks)
-
 indexRouter.get('/bookStore',indexController.bookStore)
 module.exports = indexRouter;
 
