@@ -1,5 +1,3 @@
-const NodeCache = require('node-cache');
-const apicache = require('../cache/apiCall');
 
 const bookStoreModel = require('../model/bookStores');
 const booksModel = require('../model/bookModel');
@@ -25,8 +23,90 @@ const bookStoreUpdateInfos = (req,res) => {
     res.render('bookStoreUpdateInfos');
 }
 const getCityNames = (req,res) => {
-    const apiResponse = apicache.get('cityNames');
-    res.send(apiResponse);
+    let citys = [
+        "Adana",
+    "Adıyaman",
+    "Afyonkarahisar",
+    "Ağrı",
+    "Aksaray",
+    "Amasya",
+    "Ankara",
+    "Antalya",
+    "Ardahan",
+    "Artvin",
+    "Aydın",
+    "Balıkesir",
+    "Bartın",
+    "Batman",
+    "Bayburt",
+    "Bilecik",
+    "Bingöl",
+    "Bitlis",
+    "Bolu",
+    "Burdur",
+    "Bursa",
+    "Çanakkale",
+    "Çankırı",
+    "Çorum",
+    "Denizli",
+    "Diyarbakır",
+    "Düzce",
+    "Edirne",
+    "Elazığ",
+    "Erzincan",
+    "Erzurum",
+    "Eskişehir",
+    "Gaziantep",
+    "Giresun",
+    "Gümüşhane",
+    "Hakkâri",
+    "Hatay",
+    "Iğdır",
+    "Isparta",
+    "İstanbul",
+    "İzmir",
+    "Kahramanmaraş",
+    "Karabük",
+    "Karaman",
+    "Kars",
+    "Kastamonu",
+    "Kayseri",
+    "Kilis",
+    "Kırıkkale",
+    "Kırklareli",
+    "Kırşehir",
+    "Kocaeli",
+    "Konya",
+    "Kütahya",
+    "Malatya",
+    "Manisa",
+    "Mardin",
+    "Mersin",
+    "Muğla",
+    "Muş",
+    "Nevşehir",
+    "Niğde",
+    "Ordu",
+    "Osmaniye",
+    "Rize",
+    "Sakarya",
+    "Samsun",
+    "Siirt",
+    "Sinop",
+    "Sivas",
+    "Şanlıurfa",
+    "Şırnak",
+    "Tekirdağ",
+    "Tokat",
+    "Trabzon",
+    "Tunceli",
+    "Uşak",
+    "Van",
+    "Yalova",
+    "Yozgat",
+    "Zonguldak"
+    ]
+    res.send(citys);
 }
 const getBooks = async (req,res) => {
     const searchedCity = req.params.city;

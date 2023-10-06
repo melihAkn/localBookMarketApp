@@ -1,4 +1,3 @@
-//
 const bookModel = require('../model/bookModel');
 const bookStoreModel = require('../model/bookStores');
 const fs = require('fs');

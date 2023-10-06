@@ -1,10 +1,11 @@
 const cityApiUrl = "http://localhost:3000/index/getCityNames";
+
 const  getCityOptions = async _ => {
     await fetch(cityApiUrl)
     .then(response => response.json())
     .then(data => {
-        const selectElement = document.querySelector(".citys");
         data.forEach(city => {
+            const selectElement = document.querySelector(".citys");
             const optionElement = document.createElement("option");
             optionElement.value = city; 
             optionElement.textContent = city;
@@ -80,6 +81,7 @@ function performSearchByCity() {
 const searchButton = document.querySelector('button');
 searchButton.addEventListener('click', performSearch);
 document.addEventListener('DOMContentLoaded',async () => {
-   await getCityOptions()
+    await getCityOptions()
     performSearchByCity()
 })
+
