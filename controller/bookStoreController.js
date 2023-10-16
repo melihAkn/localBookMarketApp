@@ -141,6 +141,29 @@ const deleteBooks = async (req,res) => {
     array = []
     res.send("Book successfully deleted")
 }
+const updateBooks = async (req,res) => {
+    const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
+    let booksFilter = {ISBN : req.params.barcodNo}
+    const books = await bookModel.find(booksFilter)
+    let bookStore
+    books.forEach(e => {
+        bookStore = e.addingBookStore
+    });
+    if(!books[0]){
+        res.send("The entered barcode does not match any book.")
+        return
+    }else if(books){
+        const findedBookStore = await bookStoreModel.find({_id : jwtResult._id})
+        let array = []
+        findedBookStore[0].Books.forEach((e) => {
+             if(e.ISBN === req.params.barcodNo){
+            } else{
+                array.push(e)
+            }
+        });
+    }
+}
+
 const bulkAdd = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     const jsonFile = req.file;
@@ -204,5 +227,6 @@ module.exports = {
     findMyInfos,
     updateMyInfos,
     deleteBooks,
-    bulkAdd
+    bulkAdd,
+    updateBooks
 };

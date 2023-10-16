@@ -46,47 +46,41 @@ h2 {
     margin-top: 0;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table th, table td {
-    padding: 10px;
-    text-align: left;
-}
-
-table th {
-    background-color: #333;
-    color: #fff;
-}
-
-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-form label, form input, form button {
-    display: block;
-    margin-bottom: 10px;
-}
-
-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-}
-
-form button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-}
-
 footer {
     text-align: center;
     padding: 10px;
     background-color: #333;
     color: #fff;
 }
+form {
+    width: 500px; /* Form genişliği */
+    margin: 0 auto; /* Formu ortala */
+  }
+  
+  label {
+    display: block; /* Her label'ı yeni bir satırda göster */
+    margin-bottom: 5px; /* Label'lar arasına boşluk bırak */
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%; /* Veri giriş alanlarını formun genişliğine uzat */
+    padding: 5px; /* Kenar boşluğu ekleyin */
+    margin-bottom: 10px; /* Veri giriş alanları arasına boşluk bırak */
+    border: 1px solid #ccc; /* Kenar çizgisi ekle */
+    border-radius: 4px; /* Kenarları yuvarlat */
+  }
+  
+  button {
+    background-color: #4CAF50; /* Düğme arka plan rengi */
+    color: white; /* Düğme metin rengi */
+    padding: 10px 15px; /* Düğme boyutları */
+    border: none; /* Kenar çizgisi olmasın */
+    border-radius: 4px; /* Kenarları yuvarlat */
+    cursor: pointer; /* Üzerine gelince işaretçi el simgesi olsun */
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Üzerine gelince arka plan rengi değişsin */
+  }
+  

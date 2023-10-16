@@ -35,3 +35,7 @@ marketApp.listen(3000, _ => {
     console.log("server 3000 portundan ayaklandi");
 })
 
+marketApp.get('/', (req, res) => {
+  res.redirect('/index')
+})
+

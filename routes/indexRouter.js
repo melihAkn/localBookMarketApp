@@ -47,6 +47,7 @@ indexRouter.get('/getBooksCountAndBookStoreCount',indexController.getBooksCountA
 indexRouter.post('/bookStoreBulkAddBook', upload.single('jsonFile'), bookStoreController.bulkAdd);
 
 indexRouter.delete('/bookStoreDeleteBooks/:barcodNo', bookStoreController.deleteBooks);
+indexRouter.post('/bookStoreUpdateBooks/:barcodNo',bookStoreController.updateBooks)
 
 indexRouter.get('/bookStore',indexController.bookStore)
 module.exports = indexRouter;
