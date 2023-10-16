@@ -167,7 +167,6 @@ headers : {
             .then(response => {
                 if (response.ok) {
                   // İşlem başarılı, yönlendirme yapabilirsiniz
-                  window.location.href = '/index/bookStore'; // Örnek yönlendirme URL'si
                 } else {
                   // İşlem hatalı ise hata mesajı alabilirsiniz
                   console.error('İşlem başarısız:', response.status);
