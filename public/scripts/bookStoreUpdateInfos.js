@@ -1,4 +1,4 @@
-const getInfosApiUrl = "http://localhost:3000/bookStore/findMyInfos";
+const getInfosApiUrl = "/bookStore/findMyInfos";
 const token = document.cookie.split('; ').find(cookie => cookie.startsWith('token=')).split('=')[1];
 console.log(token);
 
@@ -47,7 +47,7 @@ form.addEventListener('submit', function() {
             bookStoreCity : formData.get('bookStoreCity'),
             bookStoreWebsite : formData.get('bookStoreWebsite'),
         }
-     fetch('http://localhost:3000/index/bookStoreUpdateInfos', {
+     fetch('/index/bookStoreUpdateInfos', {
          method: 'PATCH',
          headers: {
              'Content-Type': 'application/json',

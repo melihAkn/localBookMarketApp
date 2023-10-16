@@ -3,7 +3,7 @@ console.log(token);
 
 function  getMyBooks() {
 
-const apiUrl = `http://localhost:3000/bookStore/getMyBooks`;
+const apiUrl = `/bookStore/getMyBooks`;
 let bookStoreUpdateURL = ""
 let updateForm
 fetch(apiUrl, {
@@ -50,7 +50,7 @@ headers : {
            let cardRemove = button.parentElement.parentElement
            const barcodNo = cardRemove.childNodes[1].childNodes[13].textContent.replace('barkod no: ', '')
            console.log(barcodNo)
-           const bookStoreDeleteUrl = `http://localhost:3000/index/bookStoreDeleteBooks/${barcodNo}`
+           const bookStoreDeleteUrl = `/index/bookStoreDeleteBooks/${barcodNo}`
            fetch(bookStoreDeleteUrl, {
             method : 'DELETE',
             headers : {
@@ -73,7 +73,7 @@ headers : {
     button.addEventListener('click', _ => {
         let updatedCard = button.parentElement.parentElement
         const barcodNo = updatedCard.childNodes[1].childNodes[13].textContent.replace('barkod no: ', '')
-        bookStoreUpdateURL = `http://localhost:3000/index/bookStoreUpdateBooks/${barcodNo}`
+        bookStoreUpdateURL = `/index/bookStoreUpdateBooks/${barcodNo}`
         console.log(barcodNo)
         console.log(updatedCard)
         //this is the sequence of the book to be updated

@@ -2,7 +2,7 @@ const token = document.cookie.split('; ').find(cookie => cookie.startsWith('toke
 console.log(token)
 const form = document.getElementById('uploadForm')
 const jsonFileInput = document.getElementById('jsonFileInput')
-const backendURL = "http://localhost:3000/index/bookStoreBulkAddBook"
+const backendURL = "/index/bookStoreBulkAddBook"
 
 
 

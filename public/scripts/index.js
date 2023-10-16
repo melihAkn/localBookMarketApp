@@ -1,5 +1,5 @@
-const cityApiUrl = "http://localhost:3000/index/getCityNames";
-const getBooksCountURL = "http://localhost:3000/index/getBooksCountAndBookStoreCount";
+const cityApiUrl = "/index/getCityNames";
+const getBooksCountURL = "/index/getBooksCountAndBookStoreCount";
 
 const  getCityOptions = async _ => {
     await fetch(cityApiUrl)
@@ -69,13 +69,13 @@ function performSearch() {
         return
     }
     const selectedLocation = document.querySelector(".citys").value;
-    const apiUrl = `http://localhost:3000/index/getBooks/${selectedLocation}/${searchValue}`;
+    const apiUrl = `/index/getBooks/${selectedLocation}/${searchValue}`;
     getData(apiUrl)
 }
 function performSearchByCity() {
     const selectedLocation = document.querySelector(".citys").value;
     console.log(selectedLocation)
-    const apiUrl = `http://localhost:3000/index/getBooksByCity/${selectedLocation}`;
+    const apiUrl = `/index/getBooksByCity/${selectedLocation}`;
     getData(apiUrl)
 }
 

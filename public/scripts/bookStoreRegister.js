@@ -1,4 +1,4 @@
-const cityApiUrl = "http://localhost:3000/index/getCityNames";
+const cityApiUrl = "/index/getCityNames";
 fetch(cityApiUrl)
     .then(response => response.json())
     .then(data => {
