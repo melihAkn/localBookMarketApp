@@ -147,6 +147,19 @@ const bulkAddPage = (req,res) => {
     res.render('bookStoreBulkAdd')
 }
  
+const getBooksCountAndBookStoreCount =async (req,res) => {
+    let booksAndBookStoreCount = {
+        booksCount : 0,
+        bookStoreCount : 0
+    }
+    const booksCount = await booksModel.countDocuments({})
+    booksAndBookStoreCount.booksCount = booksCount
+    
+    const bookStoreCount = await bookStoreModel.countDocuments({}) 
+    booksAndBookStoreCount.bookStoreCount = bookStoreCount
+    res.send(booksAndBookStoreCount)
+
+}
 
 module.exports = {
     index,
@@ -159,5 +172,6 @@ module.exports = {
     bookStoreUpdateInfos,
     getCityNames,
     getBooksByCity,
-    bulkAddPage
+    bulkAddPage,
+    getBooksCountAndBookStoreCount
 }

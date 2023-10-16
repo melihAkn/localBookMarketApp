@@ -47,7 +47,7 @@ form.addEventListener('submit', function() {
             bookStoreCity : formData.get('bookStoreCity'),
             bookStoreWebsite : formData.get('bookStoreWebsite'),
         }
-     fetch('/index/bookStoreUpdateInfos', {
+     fetch('http://localhost:3000/index/bookStoreUpdateInfos', {
          method: 'PATCH',
          headers: {
              'Content-Type': 'application/json',

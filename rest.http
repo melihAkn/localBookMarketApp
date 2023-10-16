@@ -10,6 +10,8 @@ GET {{BASE_URL}}/index/getCityNames
 GET {{BASE_URL}}/index/getBooks/Ankara/d
 Content-Type: application/json
 
+
+
 ###
 POST {{BASE_URL}}/bookStore/register
 Content-Type: application/json

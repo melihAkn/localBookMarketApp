@@ -20,7 +20,7 @@ const form = document.getElementById('myForm');
                averageRating : formData.get('averageRating')
            }
         
-        fetch('/index/bookStoreAddBooks', {
+        fetch('http://localhost:3000/index/bookStoreAddBooks', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

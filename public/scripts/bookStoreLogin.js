@@ -3,7 +3,7 @@ const form = document.getElementById('myForm');
 form.addEventListener('submit', function(event) {
 const formData = new FormData(form);
 console.log(formData)
-fetch('/index/bookStoreLogin', {
+fetch('http://localhost:3000/index/bookStoreLogin', {
     method: 'POST',
     body: formData
 })

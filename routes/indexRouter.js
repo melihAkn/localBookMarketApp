@@ -41,7 +41,8 @@ indexRouter.get('/bookStoreUpdateInfos', indexController.bookStoreUpdateInfos);
 indexRouter.patch('/bookStoreUpdateInfos', bookStoreController.updateMyInfos);
 
 indexRouter.get('/bookStoreBulkAddBook',indexController.bulkAddPage)
-//indexRouter.post('/bookStoreBulkAddBooks',bookStoreController.bulkAdd)
+
+indexRouter.get('/getBooksCountAndBookStoreCount',indexController.getBooksCountAndBookStoreCount)
 
 indexRouter.post('/bookStoreBulkAddBook', upload.single('jsonFile'), bookStoreController.bulkAdd);
 

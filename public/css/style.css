@@ -95,3 +95,13 @@ footer {
 .card .card-text {
     margin-top: 5px;
 }
+.booksCount {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+.bookStoreCount {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}

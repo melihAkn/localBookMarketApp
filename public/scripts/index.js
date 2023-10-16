@@ -1,4 +1,5 @@
 const cityApiUrl = "http://localhost:3000/index/getCityNames";
+const getBooksCountURL = "http://localhost:3000/index/getBooksCountAndBookStoreCount";
 
 const  getCityOptions = async _ => {
     await fetch(cityApiUrl)
@@ -77,9 +78,27 @@ function performSearchByCity() {
     const apiUrl = `http://localhost:3000/index/getBooksByCity/${selectedLocation}`;
     getData(apiUrl)
 }
+
+function getBooksCount() {
+    fetch(getBooksCountURL)
+    .then(response => response.json())
+    .then(data => {
+        const pElementBooksCount = document.querySelector('.booksCount')
+        const pElementBookStoreCount = document.querySelector('.bookStoreCount')
+        pElementBooksCount.textContent =`Kayitli kitap sayisi:${data.booksCount} `
+        pElementBookStoreCount.textContent = `Kayitli kirtasiye sayisi:${data.bookStoreCount} `
+
+    })
+    .catch(e => {
+
+    })
+}
+
+
 const searchButton = document.querySelector('button');
 searchButton.addEventListener('click', performSearch);
 document.addEventListener('DOMContentLoaded',async () => {
+    getBooksCount()
     await getCityOptions()
     performSearchByCity()
 })
