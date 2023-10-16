@@ -145,25 +145,40 @@ const updateBooks = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     let booksFilter = {ISBN : req.params.barcodNo}
     const books = await bookModel.find(booksFilter)
-    let bookStore
-    books.forEach(e => {
-        bookStore = e.addingBookStore
-    });
+    const newBook = {
+        name: req.body.name,
+        publisher: req.body.publisher,
+        author: req.body.author,
+        stock: req.body.stock,
+        publicationDate: req.body.publicationDate,
+        pageCount: req.body.pageCount,
+        ISBN: req.body.ISBN,
+        language: req.body.language,
+        genre: req.body.genre,
+        description: req.body.description,
+        averageRating: req.body.averageRating,
+        ownedBookStore : jwtResult.bookStoreName
+    };
     if(!books[0]){
         res.send("The entered barcode does not match any book.")
         return
     }else if(books){
-        const findedBookStore = await bookStoreModel.find({_id : jwtResult._id})
-        let array = []
-        findedBookStore[0].Books.forEach((e) => {
-             if(e.ISBN === req.params.barcodNo){
-            } else{
-                array.push(e)
-            }
-        });
-    }
-}
+       await bookModel.updateOne(
+            {ISBN: req.params.barcodNo },
+            {$set : req.body})
 
+        const findedBookStore = await bookStoreModel.find({_id : jwtResult._id})
+        findedBookStore[0].Books.forEach(async e => {
+            if(e.ISBN === req.params.barcodNo){
+                    await bookStoreModel.collection.updateOne(
+                        { 'Books.ISBN': req.params.barcodNo }, 
+                        { $set: { 'Books.$' : newBook } } 
+                      );
+            }
+        })
+    }
+    res.redirect('/index/bookStore')
+}
 const bulkAdd = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     const jsonFile = req.file;
