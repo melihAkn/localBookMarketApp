@@ -38,7 +38,7 @@ npm start
 http://localhost:3000/
 
 yada bu adrese giderekte projeyi canlı olarak da goruntuleyebilirsiniz
-gavinortfolio.com.tr
+https://gavinortfolio.com.tr
 
 
 
