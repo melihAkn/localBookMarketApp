@@ -1,6 +1,4 @@
 
-## isim dusunucem   
-
 ## Projenin amacı
 şehire gore o şehirdeki kitapların stok bilgisine ve fiyat bilgisine gore listelenmesi
 
@@ -33,7 +31,6 @@ mongod
 CONNECTION_STRING = "mongodb://127.0.0.1:27017/localBookShop"
 SECRET_KEY = "gizliAnahtar"
 ```
-
 
 6. Projeyi başlatmak için aşağıdaki komutu çalıştırın:
 
