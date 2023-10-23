@@ -33,6 +33,7 @@ headers : {
                     <p class="card-Lang">dil: ${bookArray.language}</p>
                     <p class="card-Category">kategori: ${bookArray.genre}</p>
                     <p class="card-BookDescription">kitap aciklamasi: ${bookArray.description}</p>
+                    <p class="card-BookDescription">kitap fiyat ₺ : ${bookArray.price} </p>
                     <p class="card-AvgRate">ortalama puan: ${bookArray.averageRating}</p>
                     <button class = "card-BookDelete" >sil</button>
                     <button class = "card-BookUpdate" >guncelle</button>
@@ -130,8 +131,11 @@ headers : {
         <label for="description">Kitap Açıklaması:</label>
             <textarea id="description" name="description" placeholder="Kitap açıklamasını girin" >${book[9]}</textarea></br>
 
+            <label for="description">Kitap fiyati ₺:</label>
+            <textarea id="price" name="price" placeholder="Kitap fiyatini girin" >${book[10]}</textarea></br>
+
          <label for="averageRating">Ortalama Puan:</label>
-             <input type="text" id="averageRating" name="averageRating" placeholder="Ortalama puanı girin" value = ${book[10]}></br>
+             <input type="text" id="averageRating" name="averageRating" placeholder="Ortalama puanı girin" value = ${book[11]}></br>
 
   <button type="submit">Kitabı Kaydet</button>
         </form>
@@ -154,6 +158,7 @@ headers : {
                 language : formData.get('language'),
                 genre : formData.get('category'),
                 description : formData.get('description'),
+                price : formData.get('price'),
                 averageRating : formData.get('averageRating')
             }
             fetch(bookStoreUpdateURL ,{
@@ -167,6 +172,7 @@ headers : {
             .then(response => {
                 if (response.ok) {
                   // İşlem başarılı, yönlendirme yapabilirsiniz
+                  location.reload()
                 } else {
                   // İşlem hatalı ise hata mesajı alabilirsiniz
                   console.error('İşlem başarısız:', response.status);

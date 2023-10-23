@@ -28,13 +28,19 @@ npm install
 ```shell
 mongod
 ```
+5. projenin ana dizinine .env adında bir dosya oluşturun ve içine aşağıdaki kodları yazın
+```shell
+CONNECTION_STRING = "mongodb://127.0.0.1:27017/localBookShop"
+SECRET_KEY = "gizliAnahtar"
+```
 
-5. Projeyi başlatmak için aşağıdaki komutu çalıştırın:
+
+6. Projeyi başlatmak için aşağıdaki komutu çalıştırın:
 
 ```shell
 npm start
 ```
-6. projeyi tarayıcınızda şu adrese giderek goruntuleyeblirsiniz
+7. projeyi tarayıcınızda şu adrese giderek goruntuleyeblirsiniz
 http://localhost:3000/
 
 yada bu adrese giderek projeyi canlı olarak goruntuleyebilirsiniz

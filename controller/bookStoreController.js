@@ -70,7 +70,8 @@ const addBooks = async (req, res) => {
             genre: req.body.genre,
             description: req.body.description,
             averageRating: req.body.averageRating,
-            ownedBookStore : findBookStore.bookStoreName
+            price : req.body.price,
+            addingBookStore : findBookStore.bookStoreName
         };
         findBookStore.Books.push(newBook);
         await findBookStore.save();
@@ -142,6 +143,7 @@ const deleteBooks = async (req,res) => {
     res.send("Book successfully deleted")
 }
 const updateBooks = async (req,res) => {
+    console.log(req.body)
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);
     let booksFilter = {ISBN : req.params.barcodNo}
     const books = await bookModel.find(booksFilter)
@@ -156,8 +158,9 @@ const updateBooks = async (req,res) => {
         language: req.body.language,
         genre: req.body.genre,
         description: req.body.description,
+        price : req.body.price,
         averageRating: req.body.averageRating,
-        ownedBookStore : jwtResult.bookStoreName
+        addingBookStore : jwtResult.bookStoreName
     };
     if(!books[0]){
         res.send("The entered barcode does not match any book.")
@@ -177,7 +180,7 @@ const updateBooks = async (req,res) => {
             }
         })
     }
-    res.redirect('/index/bookStore')
+    res.end()
 }
 const bulkAdd = async (req,res) => {
     const jwtResult = jwt.verify(req.header('Authorization').replace('Bearer ', ''), secretKey);

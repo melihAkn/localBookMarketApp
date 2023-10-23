@@ -17,6 +17,7 @@ const form = document.getElementById('myForm');
                language : formData.get('language'),
                genre : formData.get('genre'),
                description : formData.get('description'),
+               price : formData.get('price'),
                averageRating : formData.get('averageRating')
            }
         

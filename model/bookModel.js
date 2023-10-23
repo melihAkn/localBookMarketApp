@@ -46,7 +46,6 @@ const bookSchema = new schema ({
         required : true,
         minLength : 1,
         maxLength : 25,
-        
     },
     genre : {
         type : String,
@@ -60,6 +59,13 @@ const bookSchema = new schema ({
         minLength : 3,
         maxLength : 256,
     },
+    price : {
+        type : Number,
+        required : false,
+        default : 0,
+        minvalue : 0,
+        maxvalue : 1000,
+    },
     averageRating : {
         type : Number,
         required : false,
@@ -71,10 +77,6 @@ const bookSchema = new schema ({
         required : true,
         
     },
-    ownedBookStore : {
-        type : String,
-        required : false
-    }
 
 },{collection:'books', timestamps: true});
 

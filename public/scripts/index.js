@@ -43,6 +43,7 @@ const getData = (url) => {
                         <p class="card-text">kategori: ${bookArray.genre}</p>
                         <p class="card-text">kitap aciklamasi: ${bookArray.description}</p>
                         <p class="card-text">ortalama puan: ${bookArray.averageRating}</p>
+                        <p class="card-text">kitap fiyati: ${bookArray.price} ₺</p>
                         <p class="card-text">kirtasiye ismi: ${bookArray.ownedBookStore}</p>
                         <!-- Diğer alanlari buraya ekleyin -->
                     </div>
