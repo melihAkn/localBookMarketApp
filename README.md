@@ -15,21 +15,22 @@ git clone https://github.com/melihAkn/localBookMarketApp.git
 cd .\localBookMarketApp
 ```
 
-3. Gerekli bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
+3. projenin ana dizinine .env adında bir dosya oluşturun ve içine aşağıdaki kodları yazın
+```shell
+CONNECTION_STRING = "mongodb://127.0.0.1:27017/localBookShop"
+SECRET_KEY = "gizliAnahtar"
+```
+
+4. Gerekli bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
 
 ```shell
 npm install
 ```
 
-4. MongoDB veritabanını başlatın:
+5. MongoDB veritabanını başlatın:
 
 ```shell
 mongod
-```
-5. projenin ana dizinine .env adında bir dosya oluşturun ve içine aşağıdaki kodları yazın
-```shell
-CONNECTION_STRING = "mongodb://127.0.0.1:27017/localBookShop"
-SECRET_KEY = "gizliAnahtar"
 ```
 
 6. Projeyi başlatmak için aşağıdaki komutu çalıştırın:
