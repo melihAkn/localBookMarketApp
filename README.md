@@ -41,10 +41,3 @@ npm start
 7. projeyi tarayıcınızda şu adrese giderek goruntuleyeblirsiniz
 http://localhost:3000/
 
-yada bu adrese giderek projeyi canlı olarak goruntuleyebilirsiniz
-https://gavinortfolio.com.tr
-
-
-
-
-
